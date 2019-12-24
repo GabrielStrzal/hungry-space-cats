@@ -1,33 +1,35 @@
 package com.strzal.hungry;
 
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.strzal.gdx.BasicGame;
+import com.strzal.gdx.screenManager.ScreenManager;
+import com.strzal.hungry.config.GameConfig;
+import com.strzal.hungry.loading.LoadingPathsImpl;
+import com.strzal.hungry.screenManager.ScreenEnum;
+import com.strzal.hungry.screens.MenuScreen;
 
-public class HungrySpaceCats extends ApplicationAdapter {
+public class HungrySpaceCats extends BasicGame {
 	SpriteBatch batch;
 	Texture img;
 	
 	@Override
 	public void create () {
+		screenWidth = GameConfig.SCREEN_WIDTH;
+		screenHeight = GameConfig.SCREEN_HEIGHT;
+
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		loadingPaths = new LoadingPathsImpl();
+
+		ScreenManager.getInstance().initialize(this);
+		ScreenManager.getInstance()
+				.showScreen(ScreenEnum.LOADING_SCREEN, this, loadingPaths, new MenuScreen(this));
 	}
 
-	@Override
-	public void render () {
-		Gdx.gl.glClearColor(1, 0, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
-	}
+
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
 	}
 }
