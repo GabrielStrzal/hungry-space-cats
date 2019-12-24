@@ -1,6 +1,5 @@
 package com.strzal.hungry;
 
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.strzal.gdx.BasicGame;
 import com.strzal.gdx.screenManager.ScreenManager;
@@ -11,8 +10,7 @@ import com.strzal.hungry.screens.MenuScreen;
 
 public class HungrySpaceCats extends BasicGame {
 	SpriteBatch batch;
-	Texture img;
-	
+
 	@Override
 	public void create () {
 		screenWidth = GameConfig.SCREEN_WIDTH;

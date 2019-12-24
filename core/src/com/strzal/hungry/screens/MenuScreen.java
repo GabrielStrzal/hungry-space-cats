@@ -30,13 +30,13 @@ public class MenuScreen extends BasicMenuScreen {
         //Set table to fill stage
         mainTable.setFillParent(true);
         //Set alignment of contents in the table.
-        mainTable.center();
+        mainTable.bottom().padBottom(10);
 
         //Create buttons
         TextButton playButton = new TextButton("Play", skin);
         TextButton exitButton = new TextButton("Exit", skin);
 
-        Image logo = new Image((Texture) game.getAssetManager().get(ImagesPaths.BADLOGIC));
+        Image background = new Image((Texture) game.getAssetManager().get(ImagesPaths.MENU_BACKGROUD));
 
         //Add listeners to buttons
         playButton.addListener(new ClickListener() {
@@ -57,12 +57,11 @@ public class MenuScreen extends BasicMenuScreen {
         });
 
         //Add buttons to table
-        mainTable.add(logo).padBottom(100);
-        mainTable.row();
         mainTable.add(playButton);
         mainTable.row();
         mainTable.add(exitButton);
 
+        stage.addActor(background);
         //Add table to stage
         stage.addActor(mainTable);
     }

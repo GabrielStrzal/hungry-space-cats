@@ -13,6 +13,8 @@ public class LoadingPathsImpl implements LoadingPaths {
 
         //Menu
         list.add(ImagesPaths.BADLOGIC);
+        list.add(ImagesPaths.MENU_BACKGROUD);
+        list.add(ImagesPaths.GAME_BACKGROUD);
 
 
         return list;

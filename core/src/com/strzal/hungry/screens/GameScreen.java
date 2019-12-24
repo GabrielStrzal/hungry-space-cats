@@ -1,12 +1,15 @@
 package com.strzal.hungry.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.strzal.gdx.BasicGame;
 import com.strzal.gdx.screenManager.ScreenManager;
+import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.screenManager.ScreenEnum;
 
 public class GameScreen extends BasicMenuScreen {
@@ -30,7 +33,7 @@ public class GameScreen extends BasicMenuScreen {
         mainTable.center();
 
 
-
+        Image background = new Image((Texture) game.getAssetManager().get(ImagesPaths.GAME_BACKGROUD));
         TextButton quitCurrentQuizListButton = new TextButton("Quit Current Quiz", skin);
 
         //Add listeners to buttons
@@ -55,6 +58,7 @@ public class GameScreen extends BasicMenuScreen {
         mainTable.row();
         mainTable.add(quitCurrentQuizListButton);
 
+        stage.addActor(background);
         //Add table to stage
         stage.addActor(mainTable);
     }
