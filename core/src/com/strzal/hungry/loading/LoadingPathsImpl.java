@@ -16,6 +16,15 @@ public class LoadingPathsImpl implements LoadingPaths {
         list.add(ImagesPaths.MENU_BACKGROUD);
         list.add(ImagesPaths.GAME_BACKGROUD);
 
+        //Buttons
+        list.add(ImagesPaths.TRANSPARENT);
+        list.add(ImagesPaths.WATTER_DRILL_01);
+        list.add(ImagesPaths.WATTER_DRILL_02);
+        list.add(ImagesPaths.WATTER_DRILL_03);
+
+        list.add(ImagesPaths.WATTER);
+        list.add(ImagesPaths.WATTER_PRESSED);
+
 
         return list;
     }

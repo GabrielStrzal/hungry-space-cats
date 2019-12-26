@@ -2,6 +2,7 @@ package com.strzal.hungry.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -23,6 +24,7 @@ public class BasicMenuScreen extends ScreenAdapter {
     private OrthographicCamera camera;
     private TextureAtlas atlas;
     protected Skin skin;
+    protected AssetManager assetManager;
 
     HungrySpaceCats game;
 
@@ -41,6 +43,7 @@ public class BasicMenuScreen extends ScreenAdapter {
 
         stage = new Stage(viewport, batch);
         this.game = (HungrySpaceCats) game;
+        this.assetManager = game.getAssetManager();
     }
 
 

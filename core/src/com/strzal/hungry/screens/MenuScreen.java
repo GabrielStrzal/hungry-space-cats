@@ -27,9 +27,7 @@ public class MenuScreen extends BasicMenuScreen {
 
         //Create Table
         Table mainTable = new Table();
-        //Set table to fill stage
         mainTable.setFillParent(true);
-        //Set alignment of contents in the table.
         mainTable.bottom().padBottom(10);
 
         //Create buttons
