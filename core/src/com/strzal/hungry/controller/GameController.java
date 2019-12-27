@@ -1,6 +1,7 @@
 package com.strzal.hungry.controller;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.strzal.hungry.entity.ChipEntity;
 import com.strzal.hungry.entity.HungryEntity;
 import com.strzal.hungry.entity.OrderItemEnum;
 import com.strzal.hungry.entity.WaterEntity;
@@ -29,13 +30,14 @@ public class GameController {
 
     //chips
     private int chips = 0;
-    //private List<WaterEntity> waterEntityList;
+    private List<ChipEntity> chipEntityList;
 
     public GameController(int cash, ArrayList<HungryEntity> hungryEntityList){
         this.cash = cash;
         oxygen = 100;
         energy = 100;
         waterEntityList = new ArrayList<>();
+        chipEntityList = new ArrayList<>();
         this.hungryEntityList = hungryEntityList;
     }
 
@@ -72,6 +74,14 @@ public class GameController {
         return false;
     }
 
+    public boolean useChips() {
+        if(isThereThisOrderInOrderList(OrderItemEnum.CHIPS_BOOL)){
+            chips -= 1;
+            return true;
+        }
+        return false;
+    }
+
     private boolean isThereThisOrderInOrderList(OrderItemEnum orderItemEnum){
 
         if(currentHungryEntity.deliverItemInOrder(orderItemEnum)){
@@ -84,13 +94,28 @@ public class GameController {
     public boolean isPossibleMakeMoreWater(){
         return water < 2;
     }
+    public boolean isPossibleMakeMoreChips(){
+        return chips < 2;
+    }
 
-    public boolean isPositionOneEmpty() {
+    public boolean isWaterPositionOneEmpty() {
         if(getWaterEntityList().isEmpty()){
             return true;
         }
 
         for (WaterEntity entity : waterEntityList) {
+            if(entity.getArrayPosition() == 1)
+                return false;
+        }
+        return true;
+    }
+
+    public boolean isChipPositionOneEmpty() {
+        if(getChipEntityList().isEmpty()){
+            return true;
+        }
+
+        for (ChipEntity entity : getChipEntityList()) {
             if(entity.getArrayPosition() == 1)
                 return false;
         }

@@ -9,6 +9,7 @@ import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
 import com.strzal.hungry.controller.LevelOrderListLoaderController;
 import com.strzal.hungry.controller.TimeController;
+import com.strzal.hungry.entity.ChipEntity;
 import com.strzal.hungry.entity.DrillButton;
 import com.strzal.hungry.entity.WaterPumpButton;
 import com.strzal.hungry.entity.WaterEntity;
@@ -75,6 +76,7 @@ public class GameScreen extends BasicMenuScreen {
 
         updateOxygen();
         updateWater();
+        updateChips();
 
     }
 
@@ -84,7 +86,7 @@ public class GameScreen extends BasicMenuScreen {
         //still room for more water
         if(gameController.getWaterEntityList().size() < gameController.getWater()){
             for (int i = 1; i <= gameController.getWater() - gameController.getWaterEntityList().size(); i++) {
-                if(gameController.isPositionOneEmpty()){
+                if(gameController.isWaterPositionOneEmpty()){
                     //in position one
                     createWater(waterYPosition, 1); // 205
                 } else {
@@ -101,6 +103,28 @@ public class GameScreen extends BasicMenuScreen {
     private void createWater(int yPosition, int arrayPosition) {
         int waterEntityXPosition = 125;
         WaterEntity waterEntity = new WaterEntity(game, gameController, stage, waterEntityXPosition, yPosition, arrayPosition);
+    }
+
+    private void updateChips() {
+        int chipsYPosition = 90;
+
+        //still room for more water
+        if(gameController.getChipEntityList().size() < gameController.getChips()){
+            for (int i = 1; i <= gameController.getChips() - gameController.getChipEntityList().size(); i++) {
+                if(gameController.isChipPositionOneEmpty()){
+                    //in position one
+                    createChips(chipsYPosition, 1); // 205
+                } else {
+                    //in position two
+                    createChips(chipsYPosition - 50, 2); // 160 (-45)
+                }
+            }
+        }
+    }
+
+    private void createChips(int yPosition, int arrayPosition) {
+        int chipsEntityXPosition = 305;
+        ChipEntity chipsEntity = new ChipEntity(game, gameController, stage, chipsEntityXPosition, yPosition, arrayPosition);
     }
 
     private void checkGameOver() {
