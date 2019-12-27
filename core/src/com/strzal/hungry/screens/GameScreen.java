@@ -11,10 +11,7 @@ import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
 import com.strzal.hungry.controller.LevelOrderListLoaderController;
 import com.strzal.hungry.controller.TimeController;
-import com.strzal.hungry.entity.ChipEntity;
-import com.strzal.hungry.entity.DrillButton;
-import com.strzal.hungry.entity.WaterPumpButton;
-import com.strzal.hungry.entity.WaterEntity;
+import com.strzal.hungry.entity.*;
 import com.strzal.hungry.hud.Hud;
 import com.strzal.hungry.screenManager.ScreenEnum;
 
@@ -25,6 +22,7 @@ public class GameScreen extends BasicMenuScreen {
     private TimeController timeController;
     private WaterPumpButton waterPumpButton;
     private DrillButton drillButton;
+    private CookingPlaceButton cookingPlaceButton;
 
     private LevelOrderListLoaderController levelOrderListLoaderController;
 
@@ -53,6 +51,9 @@ public class GameScreen extends BasicMenuScreen {
         drillButton = new DrillButton(game, gameController, stage,
                 GamePositions.DRILL_X_POSITION, GamePositions.DRILL_Y_POSITION);
 
+        cookingPlaceButton = new CookingPlaceButton(game, gameController, stage,
+                GamePositions.COOKING_PLACE_X_POSITION, GamePositions.COOKING_PLACE_Y_POSITION);
+
     }
 
 
@@ -63,6 +64,7 @@ public class GameScreen extends BasicMenuScreen {
 
         waterPumpButton.render();
         drillButton.render();
+        cookingPlaceButton.render();
 
         update();
 
@@ -79,6 +81,7 @@ public class GameScreen extends BasicMenuScreen {
         updateOxygen();
         updateWater();
         updateChips();
+        updateBools();
 
     }
 
@@ -125,6 +128,27 @@ public class GameScreen extends BasicMenuScreen {
     private void createChips(int yPosition, int arrayPosition) {
         ChipEntity chipsEntity = new ChipEntity(game, gameController, stage,
                 GamePositions.CHIPS_X_POSITION, yPosition, arrayPosition);
+    }
+
+    private void updateBools() {
+
+        //still room for more water
+        if(gameController.getBoolEntityList().size() < gameController.getBools()){
+            for (int i = 1; i <= gameController.getBools() - gameController.getBoolEntityList().size(); i++) {
+                if(gameController.isBoolPositionOneEmpty()){
+                    //in position one
+                    createBools(GamePositions.BOOL_Y_POSITION, 1);
+                } else {
+                    //in position two
+                    createBools(GamePositions.BOOL_Y_SECOND_POSITION, 2);
+                }
+            }
+        }
+    }
+
+    private void createBools(int yPosition, int arrayPosition) {
+        BoolEntity boolEntity = new BoolEntity(game, gameController, stage,
+                GamePositions.BOOL_X_POSITION, yPosition, arrayPosition);
     }
 
     private void checkGameOver() {

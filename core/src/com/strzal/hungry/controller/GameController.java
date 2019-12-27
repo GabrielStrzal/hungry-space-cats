@@ -1,10 +1,7 @@
 package com.strzal.hungry.controller;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.strzal.hungry.entity.ChipEntity;
-import com.strzal.hungry.entity.HungryEntity;
-import com.strzal.hungry.entity.OrderItemEnum;
-import com.strzal.hungry.entity.WaterEntity;
+import com.strzal.hungry.entity.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,12 +29,21 @@ public class GameController {
     private int chips = 0;
     private List<ChipEntity> chipEntityList;
 
+    //bools
+    private int bools = 0;
+    private List<BoolEntity> boolEntityList;
+
+    //chips
+    private int chipBool = 0;
+    //private List<ChipBoolEntity> chipBoolEntityList;
+
     public GameController(int cash, ArrayList<HungryEntity> hungryEntityList){
         this.cash = cash;
         oxygen = 100;
         energy = 100;
         waterEntityList = new ArrayList<>();
         chipEntityList = new ArrayList<>();
+        boolEntityList = new ArrayList<>();
         this.hungryEntityList = hungryEntityList;
     }
 
@@ -61,6 +67,9 @@ public class GameController {
     public void addChip() {
         chips++;
     }
+    public void addBool() {
+        bools++;
+    }
 
     public void useEnergy(int usedEnergy) {
         energy -= usedEnergy;
@@ -75,12 +84,19 @@ public class GameController {
     }
 
     public boolean useChips() {
+        //TODO: transform bools in chip_bool
+        //check if there are bools free
+        return false;
+    }
+
+    public boolean useChipBool() {
         if(isThereThisOrderInOrderList(OrderItemEnum.CHIPS_BOOL)){
-            chips -= 1;
+            chipBool -= 1;
             return true;
         }
         return false;
     }
+
 
     private boolean isThereThisOrderInOrderList(OrderItemEnum orderItemEnum){
 
@@ -96,6 +112,10 @@ public class GameController {
     }
     public boolean isPossibleMakeMoreChips(){
         return chips < 2;
+    }
+
+    public boolean isPossibleMakeMoreBools() {
+        return bools < 2;
     }
 
     public boolean isWaterPositionOneEmpty() {
@@ -116,6 +136,17 @@ public class GameController {
         }
 
         for (ChipEntity entity : getChipEntityList()) {
+            if(entity.getArrayPosition() == 1)
+                return false;
+        }
+        return true;
+    }
+    public boolean isBoolPositionOneEmpty() {
+        if(getBoolEntityList().isEmpty()){
+            return true;
+        }
+
+        for (BoolEntity entity : getBoolEntityList()) {
             if(entity.getArrayPosition() == 1)
                 return false;
         }
@@ -145,4 +176,6 @@ public class GameController {
             currentHungryEntity = null;
         }
     }
+
+
 }
