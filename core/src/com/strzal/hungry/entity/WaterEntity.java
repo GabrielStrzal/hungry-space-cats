@@ -44,9 +44,9 @@ public class WaterEntity extends BasicEntity {
     }
 
     private void buttonClicked() {
-        gameController.getWaterEntityList().remove(this);
-        watterButton.remove();
-        gameController.useWater();
-
+        if(gameController.useWater()){
+            gameController.getWaterEntityList().remove(this);
+            watterButton.remove();
+        };
     }
 }

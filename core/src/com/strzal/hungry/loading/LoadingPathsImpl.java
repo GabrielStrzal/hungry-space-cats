@@ -12,9 +12,8 @@ public class LoadingPathsImpl implements LoadingPaths {
         List<String> list = new ArrayList<>();
 
         //Menu
-        list.add(ImagesPaths.BADLOGIC);
-        list.add(ImagesPaths.MENU_BACKGROUD);
-        list.add(ImagesPaths.GAME_BACKGROUD);
+        list.add(ImagesPaths.MENU_BACKGROUND);
+        list.add(ImagesPaths.GAME_BACKGROUND);
 
         //Buttons
         list.add(ImagesPaths.TRANSPARENT);
@@ -22,8 +21,38 @@ public class LoadingPathsImpl implements LoadingPaths {
         list.add(ImagesPaths.WATTER_DRILL_02);
         list.add(ImagesPaths.WATTER_DRILL_03);
 
+        list.add(ImagesPaths.DRILL_02);
+        list.add(ImagesPaths.DRILL_03);
+
+        list.add(ImagesPaths.COOKING_PLACE_02);
+        list.add(ImagesPaths.COOKING_PLACE_03);
+
+        list.add(ImagesPaths.COOKING_FISH_PLACE_02);
+        list.add(ImagesPaths.COOKING_FISH_PLACE_03);
+
+        //Foods
         list.add(ImagesPaths.WATTER);
         list.add(ImagesPaths.WATTER_PRESSED);
+
+        list.add(ImagesPaths.CHIPS);
+        list.add(ImagesPaths.CHIPS_PRESSED);
+
+        list.add(ImagesPaths.FISH);
+        list.add(ImagesPaths.FISH_PRESSED);
+
+        list.add(ImagesPaths.BOOL_01);
+        list.add(ImagesPaths.BOOL_01_PRESSED);
+        list.add(ImagesPaths.BOOL_02);
+        list.add(ImagesPaths.BOOL_02_PRESSED);
+
+        list.add(ImagesPaths.BOOL_CHIPS);
+        list.add(ImagesPaths.BOOL_CHIPS_PRESSED);
+
+        list.add(ImagesPaths.BOOL_FISH);
+        list.add(ImagesPaths.BOOL_FISH_PRESSED);
+
+        //Hungry
+        list.add(ImagesPaths.HUNGRY_CAT);
 
 
         return list;

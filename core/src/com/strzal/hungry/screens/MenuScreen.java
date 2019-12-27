@@ -34,7 +34,7 @@ public class MenuScreen extends BasicMenuScreen {
         TextButton playButton = new TextButton("Play", skin);
         TextButton exitButton = new TextButton("Exit", skin);
 
-        Image background = new Image((Texture) game.getAssetManager().get(ImagesPaths.MENU_BACKGROUD));
+        Image background = new Image((Texture) game.getAssetManager().get(ImagesPaths.MENU_BACKGROUND));
 
         //Add listeners to buttons
         playButton.addListener(new ClickListener() {
@@ -42,7 +42,7 @@ public class MenuScreen extends BasicMenuScreen {
             public void clicked(InputEvent event, float x, float y) {
 
                 ScreenManager.getInstance().showScreen(
-                        ScreenEnum.GAME_SCREEN, game
+                        ScreenEnum.GAME_SCREEN, game, 1
                 );
             }
         });

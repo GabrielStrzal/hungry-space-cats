@@ -7,6 +7,7 @@ import com.strzal.gdx.BasicGame;
 import com.strzal.gdx.screenManager.ScreenManager;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
+import com.strzal.hungry.controller.LevelOrderListLoaderController;
 import com.strzal.hungry.controller.TimeController;
 import com.strzal.hungry.entity.PumpEntity;
 import com.strzal.hungry.entity.WaterEntity;
@@ -20,10 +21,12 @@ public class GameScreen extends BasicMenuScreen {
     TimeController timeController;
     PumpEntity pumpEntity;
 
+    LevelOrderListLoaderController levelOrderListLoaderController;
 
-    public GameScreen(BasicGame game) {
+    public GameScreen(BasicGame game, int level) {
         super(game);
-        gameController = new GameController(100);
+        levelOrderListLoaderController = new LevelOrderListLoaderController(game, stage);
+        gameController = new GameController(100, levelOrderListLoaderController.getLevelList(level));
         timeController = new TimeController();
     }
 
@@ -36,11 +39,11 @@ public class GameScreen extends BasicMenuScreen {
         hud = new Hud(game, gameController);
 
         //Background
-        Image background = new Image((Texture) assetManager.get(ImagesPaths.GAME_BACKGROUD));
+        Image background = new Image((Texture) assetManager.get(ImagesPaths.GAME_BACKGROUND));
         stage.addActor(background);
 
-        int pumpEntityXPosition = 15;
-        int pumpEntityYPosition = 190;
+        int pumpEntityXPosition = 10;
+        int pumpEntityYPosition = 90;
         pumpEntity = new PumpEntity(game, gameController, stage, pumpEntityXPosition, pumpEntityYPosition);
 
     }
@@ -56,8 +59,10 @@ public class GameScreen extends BasicMenuScreen {
         update();
 
         hud.draw();
+        gameController.render(stage.getBatch());
 
         checkGameOver();
+        checkLevelCompleted();
 
     }
 
@@ -69,20 +74,22 @@ public class GameScreen extends BasicMenuScreen {
     }
 
     private void updateWater() {
+        int waterYPosition = 90;
 
         //still room for more water
         if(gameController.getWaterEntityList().size() < gameController.getWater()){
             for (int i = 1; i <= gameController.getWater() - gameController.getWaterEntityList().size(); i++) {
                 if(gameController.isPositionOneEmpty()){
                     //in position one
-                    createWater(205, 1);
+                    createWater(waterYPosition, 1); // 205
                 } else {
                     //in position two
-                    createWater(160, 2);
+                    createWater(waterYPosition - 45, 2); // 160 (-45)
                 }
             }
         }
     }
+
 
 
 
@@ -98,6 +105,15 @@ public class GameScreen extends BasicMenuScreen {
             );
         }
     }
+
+    private void checkLevelCompleted() {
+        if(gameController.isCurrentLevelCompleted()){
+            ScreenManager.getInstance().showScreen(
+                    ScreenEnum.MENU_SCREEN, game
+            );
+        }
+    }
+
 
     private void updateOxygen() {
         int initialTime = 100;

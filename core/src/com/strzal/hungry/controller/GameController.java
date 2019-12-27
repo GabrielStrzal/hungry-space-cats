@@ -1,5 +1,8 @@
 package com.strzal.hungry.controller;
 
+import com.badlogic.gdx.graphics.g2d.Batch;
+import com.strzal.hungry.entity.HungryEntity;
+import com.strzal.hungry.entity.OrderItemEnum;
 import com.strzal.hungry.entity.WaterEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,11 +22,17 @@ public class GameController {
     private int water = 0;
     private List<WaterEntity> waterEntityList;
 
-    public GameController(int cash){
+    private ArrayList<HungryEntity> hungryEntityList;
+    private HungryEntity currentHungryEntity;
+
+    private boolean isCurrentLevelCompleted = false;
+
+    public GameController(int cash, ArrayList<HungryEntity> hungryEntityList){
         this.cash = cash;
         oxygen = 100;
         energy = 100;
         waterEntityList = new ArrayList<>();
+        this.hungryEntityList = hungryEntityList;
     }
 
     public void addCash(int plusCash){
@@ -48,9 +57,22 @@ public class GameController {
         energy -= usedEnergy;
     }
 
-    public void useWater() {
-        water -= 1;
+    public boolean useWater() {
+        if(isThereThisOrderInOrderList(OrderItemEnum.WATER)){
+            water -= 1;
+            return true;
+        }
+        return false;
     }
+
+    private boolean isThereThisOrderInOrderList(OrderItemEnum orderItemEnum){
+
+        if(currentHungryEntity.deliverItemInOrder(orderItemEnum)){
+            return true;
+        }
+        return false;
+    }
+
 
     public boolean isPossibleMakeMoreWater(){
         return water < 2;
@@ -66,5 +88,29 @@ public class GameController {
                 return false;
         }
         return true;
+    }
+
+
+    public void render(Batch batch){
+        if(hungryEntityList.isEmpty()){
+            isCurrentLevelCompleted = true;
+        } else {
+            renderHungryEntities(batch);
+        }
+
+    }
+
+    private void renderHungryEntities(Batch batch){
+        if(currentHungryEntity == null) {
+            currentHungryEntity = hungryEntityList.get(0);
+        }
+
+        currentHungryEntity.render(batch);
+
+        if(currentHungryEntity.hasOrderBeenCompleted()){
+            hungryEntityList.remove(currentHungryEntity);
+            addCash(100);
+            currentHungryEntity = null;
+        }
     }
 }
