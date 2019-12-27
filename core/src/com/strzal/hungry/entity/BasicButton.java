@@ -9,7 +9,7 @@ import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
 import lombok.Getter;
 
-public class BasicEntity {
+public class BasicButton {
 
     protected BasicGame game;
     protected GameController gameController;
@@ -26,7 +26,7 @@ public class BasicEntity {
     protected long initialClickTime;
     protected long cookingTime = 10; //seconds
 
-    public BasicEntity(BasicGame game, final GameController gameController, Stage stage, int xPosition, int yPosition){
+    public BasicButton(BasicGame game, final GameController gameController, Stage stage, int xPosition, int yPosition){
         this.game = game;
         this.gameController = gameController;
         this.stage = stage;

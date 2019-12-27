@@ -9,8 +9,8 @@ import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
 import com.strzal.hungry.controller.LevelOrderListLoaderController;
 import com.strzal.hungry.controller.TimeController;
-import com.strzal.hungry.entity.DrillEntity;
-import com.strzal.hungry.entity.PumpEntity;
+import com.strzal.hungry.entity.DrillButton;
+import com.strzal.hungry.entity.WaterPumpButton;
 import com.strzal.hungry.entity.WaterEntity;
 import com.strzal.hungry.hud.Hud;
 import com.strzal.hungry.screenManager.ScreenEnum;
@@ -20,8 +20,8 @@ public class GameScreen extends BasicMenuScreen {
     GameController gameController;
     Hud hud;
     TimeController timeController;
-    PumpEntity pumpEntity;
-    DrillEntity drillEntity;
+    WaterPumpButton waterPumpButton;
+    DrillButton drillButton;
 
     LevelOrderListLoaderController levelOrderListLoaderController;
 
@@ -47,8 +47,8 @@ public class GameScreen extends BasicMenuScreen {
         int pumpEntityXPosition = 10;
         int pumpEntityYPosition = 90;
 
-        pumpEntity = new PumpEntity(game, gameController, stage, pumpEntityXPosition, pumpEntityYPosition);
-        drillEntity = new DrillEntity(game, gameController, stage, pumpEntityXPosition + 180, pumpEntityYPosition);
+        waterPumpButton = new WaterPumpButton(game, gameController, stage, pumpEntityXPosition, pumpEntityYPosition);
+        drillButton = new DrillButton(game, gameController, stage, pumpEntityXPosition + 180, pumpEntityYPosition);
 
     }
 
@@ -58,8 +58,8 @@ public class GameScreen extends BasicMenuScreen {
         super.render(delta);
 
 
-        pumpEntity.render();
-        drillEntity.render();
+        waterPumpButton.render();
+        drillButton.render();
 
         update();
 

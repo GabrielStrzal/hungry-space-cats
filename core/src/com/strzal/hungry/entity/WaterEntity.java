@@ -11,7 +11,7 @@ import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
 import lombok.Getter;
 
-public class WaterEntity extends BasicEntity {
+public class WaterEntity extends BasicButton {
 
     private ImageButton watterButton;
     @Getter

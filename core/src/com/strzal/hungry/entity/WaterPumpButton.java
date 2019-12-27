@@ -13,7 +13,7 @@ import com.strzal.hungry.config.GameSetting;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
 
-public class PumpEntity extends BasicEntity{
+public class WaterPumpButton extends BasicButton {
 
     private Image currentWatterPumpImage;
 
@@ -25,7 +25,7 @@ public class PumpEntity extends BasicEntity{
 
 
 
-    public PumpEntity(BasicGame game, final GameController gameController, Stage stage, int xPosition, int yPosition){
+    public WaterPumpButton(BasicGame game, final GameController gameController, Stage stage, int xPosition, int yPosition){
         super(game, gameController, stage, xPosition, yPosition);
 
         cookingTime = GameSetting.WATER_DRILL_COOKING_TIME;

@@ -14,7 +14,7 @@ import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
 
 
-public class DrillEntity extends BasicEntity{
+public class DrillButton extends BasicButton {
 
     private Image currentDrillImage;
 
@@ -26,7 +26,7 @@ public class DrillEntity extends BasicEntity{
 
 
 
-    public DrillEntity(BasicGame game, final GameController gameController, Stage stage, int xPosition, int yPosition){
+    public DrillButton(BasicGame game, final GameController gameController, Stage stage, int xPosition, int yPosition){
         super(game, gameController, stage, xPosition, yPosition);
 
         cookingTime = GameSetting.DRILL_COOKING_TIME;
