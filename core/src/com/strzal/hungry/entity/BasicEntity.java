@@ -45,7 +45,7 @@ public class BasicEntity {
     protected boolean checkCookingTimeHasPassed(){
         long currentTime = TimeUtils.millis();
         if((currentTime - initialClickTime)/1000 > cookingTime){
-            System.out.println("Time");
+            System.out.println("Production Finished - Time");
             return true;
         }else{
             return false;

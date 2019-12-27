@@ -9,6 +9,7 @@ import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
 import com.strzal.hungry.controller.LevelOrderListLoaderController;
 import com.strzal.hungry.controller.TimeController;
+import com.strzal.hungry.entity.DrillEntity;
 import com.strzal.hungry.entity.PumpEntity;
 import com.strzal.hungry.entity.WaterEntity;
 import com.strzal.hungry.hud.Hud;
@@ -20,6 +21,7 @@ public class GameScreen extends BasicMenuScreen {
     Hud hud;
     TimeController timeController;
     PumpEntity pumpEntity;
+    DrillEntity drillEntity;
 
     LevelOrderListLoaderController levelOrderListLoaderController;
 
@@ -44,7 +46,9 @@ public class GameScreen extends BasicMenuScreen {
 
         int pumpEntityXPosition = 10;
         int pumpEntityYPosition = 90;
+
         pumpEntity = new PumpEntity(game, gameController, stage, pumpEntityXPosition, pumpEntityYPosition);
+        drillEntity = new DrillEntity(game, gameController, stage, pumpEntityXPosition + 180, pumpEntityYPosition);
 
     }
 
@@ -55,6 +59,7 @@ public class GameScreen extends BasicMenuScreen {
 
 
         pumpEntity.render();
+        drillEntity.render();
 
         update();
 

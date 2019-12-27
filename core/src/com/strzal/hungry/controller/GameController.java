@@ -27,6 +27,10 @@ public class GameController {
 
     private boolean isCurrentLevelCompleted = false;
 
+    //chips
+    private int chips = 0;
+    //private List<WaterEntity> waterEntityList;
+
     public GameController(int cash, ArrayList<HungryEntity> hungryEntityList){
         this.cash = cash;
         oxygen = 100;
@@ -51,6 +55,9 @@ public class GameController {
 
     public void addWatter() {
         water++;
+    }
+    public void addChip() {
+        chips++;
     }
 
     public void useEnergy(int usedEnergy) {

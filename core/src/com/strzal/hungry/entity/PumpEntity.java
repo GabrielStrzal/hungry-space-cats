@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.strzal.gdx.BasicGame;
+import com.strzal.hungry.config.GameSetting;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
 
@@ -27,7 +28,7 @@ public class PumpEntity extends BasicEntity{
     public PumpEntity(BasicGame game, final GameController gameController, Stage stage, int xPosition, int yPosition){
         super(game, gameController, stage, xPosition, yPosition);
 
-        cookingTime = 10; //seconds
+        cookingTime = GameSetting.WATER_DRILL_COOKING_TIME;
 
 
         ImageButton transparentWatterPump = buttonsUtils.getTransparentImageButton(xPosition, yPosition, 70, 70);
@@ -54,9 +55,9 @@ public class PumpEntity extends BasicEntity{
 
         if(!isWatterPumpPressed && gameController.isPossibleMakeMoreWater()){
             isWatterPumpPressed = !isWatterPumpPressed;
-            System.out.println("Clicked");
+            System.out.println("Water Pump Clicked");
             initialClickTime = TimeUtils.millis();
-            gameController.useEnergy(10);
+            gameController.useEnergy(GameSetting.WATER_DRILL_USED_ENERGY);
         }
     }
 
