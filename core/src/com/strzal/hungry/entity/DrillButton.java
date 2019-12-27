@@ -54,7 +54,7 @@ public class DrillButton extends BasicButton {
 
     private void buttonClicked() {
 
-        if(!isDrillPressed && gameController.isPossibleMakeMoreWater()){
+        if(!isDrillPressed && gameController.isPossibleMakeMoreChips()){
             isDrillPressed = !isDrillPressed;
             System.out.println("Drill Clicked");
             initialClickTime = TimeUtils.millis();

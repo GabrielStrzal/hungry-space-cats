@@ -1,10 +1,8 @@
 package com.strzal.hungry.entity;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.strzal.gdx.BasicGame;
 import com.strzal.hungry.constants.ImagesPaths;
@@ -35,5 +33,13 @@ public class BoolEntity extends BasicButton {
 
 
         stage.addActor(boolButton);
+    }
+
+    public int boolUsed() {
+        //if(gameController.useChips()){
+            gameController.getBoolEntityList().remove(this);
+            boolButton.remove();
+            return arrayPosition;
+        //};
     }
 }

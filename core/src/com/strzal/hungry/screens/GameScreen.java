@@ -29,7 +29,7 @@ public class GameScreen extends BasicMenuScreen {
     public GameScreen(BasicGame game, int level) {
         super(game);
         levelOrderListLoaderController = new LevelOrderListLoaderController(game, stage);
-        gameController = new GameController(100, levelOrderListLoaderController.getLevelList(level));
+        gameController = new GameController(100, levelOrderListLoaderController.getLevelList(level), this);
         timeController = new TimeController();
     }
 
@@ -107,6 +107,11 @@ public class GameScreen extends BasicMenuScreen {
     private void createWater(int yPosition, int arrayPosition) {
         WaterEntity waterEntity = new WaterEntity(game, gameController, stage,
                 GamePositions.WATER_X_POSITION, yPosition, arrayPosition);
+    }
+
+    public ChipBoolEntity createChipBoolEntity(int yPosition, int arrayPosition) {
+         return new ChipBoolEntity(game, gameController, stage,
+                GamePositions.BOOL_X_POSITION, yPosition, arrayPosition);
     }
 
     private void updateChips() {

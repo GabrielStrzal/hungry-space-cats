@@ -1,7 +1,9 @@
 package com.strzal.hungry.controller;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.strzal.hungry.config.GamePositions;
 import com.strzal.hungry.entity.*;
+import com.strzal.hungry.screens.GameScreen;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +12,8 @@ import java.util.List;
 
 @Getter
 public class GameController {
+
+    GameScreen gameScreen;
 
     @Setter
     private long energy;
@@ -33,17 +37,21 @@ public class GameController {
     private int bools = 0;
     private List<BoolEntity> boolEntityList;
 
+
     //chips
     private int chipBool = 0;
-    //private List<ChipBoolEntity> chipBoolEntityList;
+    private List<ChipBoolEntity> chipBoolEntityList;
 
-    public GameController(int cash, ArrayList<HungryEntity> hungryEntityList){
+    public GameController(int cash, ArrayList<HungryEntity> hungryEntityList, GameScreen gameScreen){
+        this.gameScreen = gameScreen;
         this.cash = cash;
         oxygen = 100;
         energy = 100;
         waterEntityList = new ArrayList<>();
         chipEntityList = new ArrayList<>();
         boolEntityList = new ArrayList<>();
+        chipBoolEntityList = new ArrayList<>();
+
         this.hungryEntityList = hungryEntityList;
     }
 
@@ -77,21 +85,32 @@ public class GameController {
 
     public boolean useWater() {
         if(isThereThisOrderInOrderList(OrderItemEnum.WATER)){
-            water -= 1;
+            water--;
             return true;
         }
         return false;
     }
 
     public boolean useChips() {
-        //TODO: transform bools in chip_bool
-        //check if there are bools free
+        if(bools > 0){
+            bools--;
+            chips--;
+            chipBool++;
+            int arrayPosition = boolEntityList.get(0).boolUsed();
+            if(arrayPosition == 1){
+                chipBoolEntityList.add(gameScreen.createChipBoolEntity(GamePositions.BOOL_Y_POSITION, arrayPosition));
+            } else {
+                chipBoolEntityList.add(gameScreen.createChipBoolEntity(GamePositions.BOOL_Y_SECOND_POSITION, arrayPosition));
+            }
+
+            return true;
+        }
         return false;
     }
 
     public boolean useChipBool() {
         if(isThereThisOrderInOrderList(OrderItemEnum.CHIPS_BOOL)){
-            chipBool -= 1;
+            chipBool--;
             return true;
         }
         return false;
@@ -115,7 +134,7 @@ public class GameController {
     }
 
     public boolean isPossibleMakeMoreBools() {
-        return bools < 2;
+        return (bools + chipBool) < 2;
     }
 
     public boolean isWaterPositionOneEmpty() {
@@ -142,11 +161,15 @@ public class GameController {
         return true;
     }
     public boolean isBoolPositionOneEmpty() {
-        if(getBoolEntityList().isEmpty()){
+        if(getBoolEntityList().isEmpty() && getChipBoolEntityList().isEmpty()){
             return true;
         }
 
         for (BoolEntity entity : getBoolEntityList()) {
+            if(entity.getArrayPosition() == 1)
+                return false;
+        }
+        for (ChipBoolEntity entity : getChipBoolEntityList()) {
             if(entity.getArrayPosition() == 1)
                 return false;
         }
