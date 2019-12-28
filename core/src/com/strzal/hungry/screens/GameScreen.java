@@ -87,12 +87,12 @@ public class GameScreen extends BasicMenuScreen {
         updateWater();
         updateChips();
         updateBools();
+        updateFish();
 
     }
 
     private void updateWater() {
 
-        //still room for more water
         if(gameController.getWaterEntityList().size() < gameController.getWater()){
             for (int i = 1; i <= gameController.getWater() - gameController.getWaterEntityList().size(); i++) {
                 if(gameController.isWaterPositionOneEmpty()){
@@ -121,7 +121,6 @@ public class GameScreen extends BasicMenuScreen {
 
     private void updateChips() {
 
-        //still room for more water
         if(gameController.getChipEntityList().size() < gameController.getChips()){
             for (int i = 1; i <= gameController.getChips() - gameController.getChipEntityList().size(); i++) {
                 if(gameController.isChipPositionOneEmpty()){
@@ -140,9 +139,20 @@ public class GameScreen extends BasicMenuScreen {
                 GamePositions.CHIPS_X_POSITION, yPosition, arrayPosition);
     }
 
+    private void updateFish() {
+        //verificar se ja foi criado o peixe
+        if( gameController.getCurrentFishEntity() == null && gameController.getFish() == 1){
+            createFish();
+        }
+    }
+
+    private void createFish() {
+        new FishEntity(game, gameController, stage,
+                GamePositions.FISH_X_POSITION, GamePositions.FISH_Y_POSITION);
+    }
+
     private void updateBools() {
 
-        //still room for more water
         if(gameController.getBoolEntityList().size() < gameController.getBools()){
             for (int i = 1; i <= gameController.getBools() - gameController.getBoolEntityList().size(); i++) {
                 if(gameController.isBoolPositionOneEmpty()){

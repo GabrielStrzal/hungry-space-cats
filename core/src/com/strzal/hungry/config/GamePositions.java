@@ -28,6 +28,9 @@ public class GamePositions {
     public static final int BOOL_Y_POSITION = 90;
     public static final int BOOL_Y_SECOND_POSITION = CHIPS_Y_POSITION - 50;
 
+    public static final int FISH_X_POSITION = 710;
+    public static final int FISH_Y_POSITION = 90;
+
 
     private GamePositions(){}
 }

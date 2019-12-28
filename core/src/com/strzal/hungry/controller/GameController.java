@@ -39,7 +39,8 @@ public class GameController {
 
     //fish
     private int fish = 0;
-    //rivate List<FishEntity> fishEntityList;
+    @Setter
+    private FishEntity currentFishEntity;
 
 
     //chips
@@ -95,6 +96,12 @@ public class GameController {
             water--;
             return true;
         }
+        return false;
+    }
+
+    public boolean useFish() {
+
+        //TODO: copy from useChips
         return false;
     }
 
