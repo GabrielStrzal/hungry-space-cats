@@ -131,7 +131,11 @@ public class Hud implements Disposable {
                 LABELS_Y_POSITION + 6,
                 100 ,15);
 
-        shapeRenderer.setColor(Color.SALMON);
+        if(gameController.getOxygen() < 20){
+            shapeRenderer.setColor(Color.RED);
+        } else {
+            shapeRenderer.setColor(Color.SALMON);
+        }
         shapeRenderer.rect(
                 OXYGEN_LABEL_X_POSITION + 70,
                 LABELS_Y_POSITION + 6,
@@ -149,7 +153,11 @@ public class Hud implements Disposable {
                 LABELS_Y_POSITION + 6,
                 100,15);
 
-        shapeRenderer.setColor(Color.SALMON);
+        if(gameController.getEnergy() < 20){
+            shapeRenderer.setColor(Color.RED);
+        } else {
+            shapeRenderer.setColor(Color.SALMON);
+        }
         shapeRenderer.rect(
                 ENERGY_LABEL_X_POSITION + 70,
                 LABELS_Y_POSITION + 6,
