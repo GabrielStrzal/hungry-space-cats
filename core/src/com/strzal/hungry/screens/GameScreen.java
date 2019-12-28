@@ -23,6 +23,7 @@ public class GameScreen extends BasicMenuScreen {
     private WaterPumpButton waterPumpButton;
     private DrillButton drillButton;
     private CookingPlaceButton cookingPlaceButton;
+    private FishMakerButton fishMakerButton;
 
     private LevelOrderListLoaderController levelOrderListLoaderController;
 
@@ -54,6 +55,9 @@ public class GameScreen extends BasicMenuScreen {
         cookingPlaceButton = new CookingPlaceButton(game, gameController, stage,
                 GamePositions.COOKING_PLACE_X_POSITION, GamePositions.COOKING_PLACE_Y_POSITION);
 
+        fishMakerButton = new FishMakerButton(game, gameController, stage,
+                GamePositions.FISH_MAKER_PLACE_X_POSITION, GamePositions.FISH_MAKER_PLACE_Y_POSITION);
+
     }
 
 
@@ -65,6 +69,7 @@ public class GameScreen extends BasicMenuScreen {
         waterPumpButton.render();
         drillButton.render();
         cookingPlaceButton.render();
+        fishMakerButton.render();
 
         update();
 

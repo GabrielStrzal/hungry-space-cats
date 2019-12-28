@@ -37,6 +37,10 @@ public class GameController {
     private int bools = 0;
     private List<BoolEntity> boolEntityList;
 
+    //fish
+    private int fish = 0;
+    //rivate List<FishEntity> fishEntityList;
+
 
     //chips
     private int chipBool = 0;
@@ -77,6 +81,9 @@ public class GameController {
     }
     public void addBool() {
         bools++;
+    }
+    public void addFish() {
+        fish++;
     }
 
     public void useEnergy(int usedEnergy) {
@@ -135,6 +142,10 @@ public class GameController {
 
     public boolean isPossibleMakeMoreBools() {
         return (bools + chipBool) < 2;
+    }
+
+    public boolean isPossibleMakeMoreFish() {
+        return fish < 1;
     }
 
     public boolean isWaterPositionOneEmpty() {
@@ -201,6 +212,5 @@ public class GameController {
             currentHungryEntity = null;
         }
     }
-
 
 }
