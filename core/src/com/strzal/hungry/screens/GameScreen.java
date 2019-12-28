@@ -1,6 +1,7 @@
 package com.strzal.hungry.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.strzal.gdx.BasicGame;
@@ -33,7 +34,7 @@ public class GameScreen extends BasicMenuScreen {
     public GameScreen(BasicGame game, int level) {
         super(game);
         levelOrderListLoaderController = new LevelOrderListLoaderController(game, stage);
-        gameController = new GameController(100, levelOrderListLoaderController.getLevelList(level), this);
+        gameController = new GameController(100, levelOrderListLoaderController.getLevelList(level), this, this.game.getGameStats());
         timeController = new TimeController();
     }
 
@@ -63,6 +64,12 @@ public class GameScreen extends BasicMenuScreen {
 
         cookingFishPlaceButton = new CookingFishPlaceButton(game, gameController, stage,
                 GamePositions.COOKING_FISH_PLACE_X_POSITION, GamePositions.COOKING_FISH_PLACE_Y_POSITION);
+
+
+        InputMultiplexer inputMultiplexer = new InputMultiplexer();
+        inputMultiplexer.addProcessor(stage);
+        inputMultiplexer.addProcessor(hud.getStage());
+        Gdx.input.setInputProcessor(inputMultiplexer);
 
     }
 
@@ -207,16 +214,32 @@ public class GameScreen extends BasicMenuScreen {
     private void checkGameOver() {
         if(gameController.getOxygen() <= 0 || gameController.getEnergy() <= 0){
             ScreenManager.getInstance().showScreen(
-                    ScreenEnum.TEXT_SCREEN, game, GameTexts.GAME_OVER_TEXT, 2
+                    ScreenEnum.TEXT_SCREEN, game, GameTexts.GAME_OVER_TEXT, GameMode.GAME_OVER
             );
         }
     }
 
+    //TODO verify
     private void checkLevelCompleted() {
         if(gameController.isCurrentLevelCompleted()){
-            ScreenManager.getInstance().showScreen(
-                    ScreenEnum.TEXT_SCREEN, game, GameTexts.GAME_WON_TEXT, 3
-            );
+
+            game.getGameStats().addWave();
+
+            //Level completed
+            if(game.getGameStats().getWave() >= GameSetting.MAXIMUM_WAVE_IN_GAME_MODE){
+                //Game Completed (You WON)
+                ScreenManager.getInstance().showScreen(
+                        ScreenEnum.TEXT_SCREEN, game, GameTexts.GAME_WON_TEXT, GameMode.YOU_WON
+                );
+            } else{
+                //Next wave
+                ScreenManager.getInstance().showScreen(
+                        ScreenEnum.TEXT_SCREEN, game, GameTexts.WAVE_COMPLETE_TEXT, GameMode.LEVEL_COMPLETED
+                );
+            }
+
+
+
         }
     }
 

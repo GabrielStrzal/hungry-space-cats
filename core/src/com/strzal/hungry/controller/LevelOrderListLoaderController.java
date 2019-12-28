@@ -4,6 +4,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.strzal.gdx.BasicGame;
+import com.strzal.hungry.config.GameSetting;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.entity.HungryEntity;
 import com.strzal.hungry.entity.OrderItemEnum;
@@ -47,7 +48,7 @@ public class LevelOrderListLoaderController {
                 hungryEntityArrayList.add(hungryEntity2);
             case 2:
 
-                hungryEntityArrayList = getRandomOrderSize(10);
+                hungryEntityArrayList = getRandomOrderSize(GameSetting.NUMBER_OF_HUNGRY_IN_WAVE);
 
 
         }

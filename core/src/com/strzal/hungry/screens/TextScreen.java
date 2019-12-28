@@ -13,15 +13,16 @@ import com.strzal.gdx.screenManager.ScreenManager;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.screenManager.ScreenEnum;
 
+
 public class TextScreen extends BasicMenuScreen {
 
     private String textToBeDisplayed;
-    private int nextScreen;
+    private GameMode gameMode;
 
-    public TextScreen(BasicGame game, String textToBeDisplayed, int nextScreen) {
+    public TextScreen(BasicGame game, String textToBeDisplayed, GameMode gameMode) {
         super(game);
         this.textToBeDisplayed = textToBeDisplayed;
-        this.nextScreen = nextScreen;
+        this.gameMode = gameMode;
     }
 
 
@@ -42,13 +43,27 @@ public class TextScreen extends BasicMenuScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
 
-                if(nextScreen == 1){
-                    ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, 2 );
-                } else {
-                    ScreenManager.getInstance().showScreen( ScreenEnum.MENU_SCREEN, game );
+                // Cases for Text Screen
+                // menu > game (story mode)
+                // menu > game (endless)
+                // game > game over (menu) > future HIGH SCORE
+                // game > you won (menu) > future HIGH SCORE
+                // game > level completed (next level, but this should not be here)
+                switch(gameMode){
+                    case STORY_MODE:
+                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, 2 );
+                        break;
+                    case ENDLESS_MODE:
+                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, 2 );
+                        break;
+                    case LEVEL_COMPLETED:
+                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, 2 );
+                        break;
+
+                    default:
+                        ScreenManager.getInstance().showScreen( ScreenEnum.MENU_SCREEN, game );
+                        break;
                 }
-
-
             }
         });
 

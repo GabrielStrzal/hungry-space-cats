@@ -4,12 +4,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.strzal.gdx.BasicGame;
 import com.strzal.gdx.screenManager.ScreenManager;
 import com.strzal.hungry.config.GameConfig;
+import com.strzal.hungry.config.GameStats;
 import com.strzal.hungry.loading.LoadingPathsImpl;
 import com.strzal.hungry.screenManager.ScreenEnum;
 import com.strzal.hungry.screens.MenuScreen;
+import lombok.Getter;
+import lombok.Setter;
 
 public class HungrySpaceCats extends BasicGame {
 	SpriteBatch batch;
+	@Getter@Setter
+	GameStats gameStats;
 
 	@Override
 	public void create () {

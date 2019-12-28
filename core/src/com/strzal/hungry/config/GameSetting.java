@@ -19,5 +19,10 @@ public class GameSetting {
     public static final int COOKING_PLACE_USED_ENERGY = 5;
     public static final int FISH_MAKER_PLACE_USED_ENERGY = 5;
 
+    //Levels in Game Mode
+    public static final int NUMBER_OF_HUNGRY_IN_WAVE = 3;
+    public static final int MAXIMUM_WAVE_IN_GAME_MODE = 10;
+    public static final int CASH_PER_ORDER = 100;
+
     private GameSetting(){}
 }

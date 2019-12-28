@@ -2,6 +2,8 @@ package com.strzal.hungry.controller;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.strzal.hungry.config.GamePositions;
+import com.strzal.hungry.config.GameSetting;
+import com.strzal.hungry.config.GameStats;
 import com.strzal.hungry.entity.*;
 import com.strzal.hungry.entity.food.*;
 import com.strzal.hungry.screens.GameScreen;
@@ -15,12 +17,12 @@ import java.util.List;
 public class GameController {
 
     GameScreen gameScreen;
+    GameStats gameStats;
 
     @Setter
     private long energy;
     @Setter
     private long oxygen;
-    private int cash;
 
     private int water = 0;
     private List<WaterEntity> waterEntityList;
@@ -57,9 +59,9 @@ public class GameController {
     private int chipBool = 0;
     private List<ChipBoolEntity> chipBoolEntityList;
 
-    public GameController(int cash, ArrayList<HungryEntity> hungryEntityList, GameScreen gameScreen){
+    public GameController(int cash, ArrayList<HungryEntity> hungryEntityList, GameScreen gameScreen, GameStats gameStats){
         this.gameScreen = gameScreen;
-        this.cash = cash;
+        this.gameStats = gameStats;
         oxygen = 100;
         energy = 100;
         waterEntityList = new ArrayList<>();
@@ -72,19 +74,7 @@ public class GameController {
         this.hungryEntityList = hungryEntityList;
     }
 
-    public void addCash(int plusCash){
-        cash += plusCash;
-    }
 
-    public boolean useCash(int useCash){
-        if (cash < useCash){
-            return false;
-        }
-        else{
-            cash -= useCash;
-           return true;
-        }
-    }
 
     public void addWatter() {
         water++;
@@ -273,9 +263,8 @@ public class GameController {
 
         if(currentHungryEntity.hasOrderBeenCompleted()){
             hungryEntityList.remove(currentHungryEntity);
-            addCash(100);
+            gameStats.addCash(GameSetting.CASH_PER_ORDER);
             currentHungryEntity = null;
         }
     }
-
 }

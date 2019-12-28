@@ -5,19 +5,26 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.strzal.gdx.BasicGame;
+import com.strzal.gdx.screenManager.ScreenManager;
 import com.strzal.hungry.config.GameConfig;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
+import com.strzal.hungry.screenManager.ScreenEnum;
+import lombok.Getter;
 
 public class Hud implements Disposable {
 
     private AssetManager assetManager;
+    @Getter
     private Stage stage;
     private BasicGame game;
     private GameController gameController;
@@ -31,12 +38,16 @@ public class Hud implements Disposable {
 
     //Labels
     Label cashLabel;
+    Label waveLabel;
 
     //Constants
     private static float LABELS_Y_POSITION = GameConfig.SCREEN_HEIGHT - 40;
     private static float CASH_LABEL_X_POSITION = 30;
+    private static float WAVE_LABEL_X_POSITION = 195;
     private static float OXYGEN_LABEL_X_POSITION = 340;
-    private static float ENERGY_LABEL_X_POSITION = 580;
+    private static float ENERGY_LABEL_X_POSITION = 545;
+
+    private static float MENU_LABEL_X_POSITION = 740;
 
 
     public Hud(BasicGame game, GameController gameController){
@@ -49,15 +60,39 @@ public class Hud implements Disposable {
         atlas = new TextureAtlas(ImagesPaths.UI_SKIN_ATLAS);
         skin = new Skin(Gdx.files.internal(ImagesPaths.UI_SKIN_JSON), atlas);
 
+
         addCashText();
+        addWaveText();
         addOxygenText();
         addEnergyText();
+        addGoToMenuButton();
+    }
+
+    private void addGoToMenuButton() {
+        TextButton menuButton = new TextButton("Exit", skin);
+        menuButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+
+                ScreenManager.getInstance().showScreen(
+                        ScreenEnum.MENU_SCREEN, game
+                );
+            }
+        });
+        menuButton.setPosition(MENU_LABEL_X_POSITION, LABELS_Y_POSITION);
+        stage.addActor(menuButton);
     }
 
     private void addCashText() {
-        cashLabel = new Label("Cash: " + gameController.getCash(), skin);
+        cashLabel = new Label("Cash: " + gameController.getGameStats().getCash(), skin);
         cashLabel.setPosition(CASH_LABEL_X_POSITION, LABELS_Y_POSITION);
         stage.addActor(cashLabel);
+    }
+
+    private void addWaveText() {
+        waveLabel = new Label("Wave: " + gameController.getGameStats().getWave(), skin);
+        waveLabel.setPosition(WAVE_LABEL_X_POSITION, LABELS_Y_POSITION);
+        stage.addActor(waveLabel);
     }
 
     private void addOxygenText() {
@@ -78,7 +113,8 @@ public class Hud implements Disposable {
 
     public void draw(){
         stage.act(Gdx.graphics.getDeltaTime());
-        cashLabel.setText("Cash: " + gameController.getCash());
+        cashLabel.setText("Cash: " + gameController.getGameStats().getCash());
+        waveLabel.setText("Wave: " + gameController.getGameStats().getWave());
         stage.draw();
 
         drawEnergyBar();

@@ -20,11 +20,21 @@ public class GameTexts {
 
             + "{RAINBOW}You are our only hope.{ENDRAINBOW}";
 
+
+    public static final String ENDLESS_TEXT =
+            "{FASTER} \n \n \n  {COLOR=RED}{SHAKE}                              " +
+                    "              This is ENDLESS MODE...how long can you last? {ENDSHAKE}";
+
+
     public static final String GAME_OVER_TEXT =
             "{FASTER} \n \n \n  {COLOR=RED}{SHAKE}                              " +
                     "                                  GAME OVER {ENDSHAKE}";
 
 
+
+    public static final String WAVE_COMPLETE_TEXT =
+            "{FASTER} \n \n \n                                " +
+                    "                                  Wave Complete! ";
 
     public static final String GAME_WON_TEXT =
             "{FASTER} \n \n \n  {RAINBOW}                              " +
