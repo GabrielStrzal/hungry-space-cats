@@ -98,9 +98,9 @@ public class GameController {
             chipBool++;
             int arrayPosition = boolEntityList.get(0).boolUsed();
             if(arrayPosition == 1){
-                chipBoolEntityList.add(gameScreen.createChipBoolEntity(GamePositions.BOOL_Y_POSITION, arrayPosition));
+                gameScreen.createChipBoolEntity(GamePositions.BOOL_Y_POSITION, 1);
             } else {
-                chipBoolEntityList.add(gameScreen.createChipBoolEntity(GamePositions.BOOL_Y_SECOND_POSITION, arrayPosition));
+                gameScreen.createChipBoolEntity(GamePositions.BOOL_Y_SECOND_POSITION, 2);
             }
 
             return true;
@@ -166,12 +166,14 @@ public class GameController {
         }
 
         for (BoolEntity entity : getBoolEntityList()) {
-            if(entity.getArrayPosition() == 1)
+            if(entity.getArrayPosition() == 1) {
                 return false;
+            }
         }
         for (ChipBoolEntity entity : getChipBoolEntityList()) {
-            if(entity.getArrayPosition() == 1)
+            if(entity.getArrayPosition() == 1) {
                 return false;
+            }
         }
         return true;
     }

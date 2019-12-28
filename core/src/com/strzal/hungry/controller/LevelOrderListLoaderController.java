@@ -32,10 +32,10 @@ public class LevelOrderListLoaderController {
             case 1:
                 ArrayList<OrderItemEnum> orderItemEnumList = new ArrayList<>();
                 orderItemEnumList.add(OrderItemEnum.WATER);
-                orderItemEnumList.add(OrderItemEnum.WATER);
+                orderItemEnumList.add(OrderItemEnum.CHIPS_BOOL);
 
                 ArrayList<OrderItemEnum> orderItemEnumList2 = new ArrayList<>();
-                orderItemEnumList2.add(OrderItemEnum.WATER);
+                orderItemEnumList2.add(OrderItemEnum.CHIPS_BOOL);
                 orderItemEnumList2.add(OrderItemEnum.WATER);
 
                 HungryEntity hungryEntity = new HungryEntity(game, stage, (Texture) assetManager.get(ImagesPaths.HUNGRY_CAT), orderItemEnumList);
