@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.strzal.gdx.BasicGame;
 import com.strzal.gdx.screenManager.ScreenManager;
+import com.strzal.hungry.config.GameTexts;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.screenManager.ScreenEnum;
 
@@ -42,7 +43,7 @@ public class MenuScreen extends BasicMenuScreen {
             public void clicked(InputEvent event, float x, float y) {
 
                 ScreenManager.getInstance().showScreen(
-                        ScreenEnum.GAME_SCREEN, game, 1
+                        ScreenEnum.TEXT_SCREEN, game, GameTexts.START_TEXT, 1
                 );
             }
         });

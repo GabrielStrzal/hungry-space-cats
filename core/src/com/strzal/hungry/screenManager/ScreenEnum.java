@@ -8,6 +8,7 @@ import com.strzal.gdx.screens.LoadingScreen;
 import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.screens.GameScreen;
 import com.strzal.hungry.screens.MenuScreen;
+import com.strzal.hungry.screens.TextScreen;
 
 
 /**
@@ -18,6 +19,11 @@ public enum ScreenEnum implements ScreenEnumInterface {
     GAME_SCREEN {
         public Screen getScreen(Object... params) {
             return new GameScreen((HungrySpaceCats)params[0], (Integer) params[1]);
+        }
+    },
+    TEXT_SCREEN {
+        public Screen getScreen(Object... params) {
+            return new TextScreen((HungrySpaceCats)params[0], (String) params[1], (Integer) params[2]);
         }
     },
     LOADING_SCREEN {

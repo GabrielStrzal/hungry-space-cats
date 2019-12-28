@@ -5,6 +5,7 @@ public class ImagesPaths {
     //Menu
     public static final String MENU_BACKGROUND = "images/menu_background.png";
     public static final String GAME_BACKGROUND = "images/game_background.png";
+    public static final String GAME_TEXT_BACKGROUND = "images/game_text_background.png";
 
     //Buttons
     public static final String TRANSPARENT = "images/buttons/transparent.png";

@@ -7,6 +7,7 @@ import com.strzal.gdx.BasicGame;
 import com.strzal.gdx.screenManager.ScreenManager;
 import com.strzal.hungry.config.GamePositions;
 import com.strzal.hungry.config.GameSetting;
+import com.strzal.hungry.config.GameTexts;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
 import com.strzal.hungry.controller.LevelOrderListLoaderController;
@@ -206,7 +207,7 @@ public class GameScreen extends BasicMenuScreen {
     private void checkGameOver() {
         if(gameController.getOxygen() <= 0 || gameController.getEnergy() <= 0){
             ScreenManager.getInstance().showScreen(
-                    ScreenEnum.MENU_SCREEN, game
+                    ScreenEnum.TEXT_SCREEN, game, GameTexts.GAME_OVER_TEXT, 2
             );
         }
     }
@@ -214,7 +215,7 @@ public class GameScreen extends BasicMenuScreen {
     private void checkLevelCompleted() {
         if(gameController.isCurrentLevelCompleted()){
             ScreenManager.getInstance().showScreen(
-                    ScreenEnum.MENU_SCREEN, game
+                    ScreenEnum.TEXT_SCREEN, game, GameTexts.GAME_WON_TEXT, 3
             );
         }
     }
