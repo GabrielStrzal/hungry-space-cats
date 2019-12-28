@@ -32,7 +32,7 @@ public class LevelOrderListLoaderController {
             case 1:
                 ArrayList<OrderItemEnum> orderItemEnumList = new ArrayList<>();
                 orderItemEnumList.add(OrderItemEnum.WATER);
-                orderItemEnumList.add(OrderItemEnum.CHIPS_BOOL);
+                orderItemEnumList.add(OrderItemEnum.FISH_BOOL);
 
                 ArrayList<OrderItemEnum> orderItemEnumList2 = new ArrayList<>();
                 orderItemEnumList2.add(OrderItemEnum.CHIPS_BOOL);

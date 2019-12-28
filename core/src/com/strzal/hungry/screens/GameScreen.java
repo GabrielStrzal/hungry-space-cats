@@ -24,6 +24,7 @@ public class GameScreen extends BasicMenuScreen {
     private DrillButton drillButton;
     private CookingPlaceButton cookingPlaceButton;
     private FishMakerButton fishMakerButton;
+    private CookingFishPlaceButton cookingFishPlaceButton;
 
     private LevelOrderListLoaderController levelOrderListLoaderController;
 
@@ -58,6 +59,9 @@ public class GameScreen extends BasicMenuScreen {
         fishMakerButton = new FishMakerButton(game, gameController, stage,
                 GamePositions.FISH_MAKER_PLACE_X_POSITION, GamePositions.FISH_MAKER_PLACE_Y_POSITION);
 
+        cookingFishPlaceButton = new CookingFishPlaceButton(game, gameController, stage,
+                GamePositions.COOKING_FISH_PLACE_X_POSITION, GamePositions.COOKING_FISH_PLACE_Y_POSITION);
+
     }
 
 
@@ -70,6 +74,7 @@ public class GameScreen extends BasicMenuScreen {
         drillButton.render();
         cookingPlaceButton.render();
         fishMakerButton.render();
+        cookingFishPlaceButton.render();
 
         update();
 
@@ -88,6 +93,7 @@ public class GameScreen extends BasicMenuScreen {
         updateChips();
         updateBools();
         updateFish();
+        updateSmallBools();
 
     }
 
@@ -117,6 +123,11 @@ public class GameScreen extends BasicMenuScreen {
     public ChipBoolEntity createChipBoolEntity(int yPosition, int arrayPosition) {
          return new ChipBoolEntity(game, gameController, stage,
                 GamePositions.BOOL_X_POSITION, yPosition, arrayPosition);
+    }
+
+    public FishBoolEntity createFishBoolEntity(int yPosition, int arrayPosition) {
+        return new FishBoolEntity(game, gameController, stage,
+                GamePositions.BOOL_SMALL_X_POSITION, yPosition, arrayPosition);
     }
 
     private void updateChips() {
@@ -169,6 +180,26 @@ public class GameScreen extends BasicMenuScreen {
     private void createBools(int yPosition, int arrayPosition) {
         BoolEntity boolEntity = new BoolEntity(game, gameController, stage,
                 GamePositions.BOOL_X_POSITION, yPosition, arrayPosition);
+    }
+
+    private void updateSmallBools() {
+
+        if(gameController.getBoolSmallEntityList().size() < gameController.getSmallBools()){
+            for (int i = 1; i <= gameController.getSmallBools() - gameController.getBoolSmallEntityList().size(); i++) {
+                if(gameController.isBoolSmallPositionOneEmpty()){
+                    //in position one
+                    createSmallBools(GamePositions.BOOL_SMALL_Y_POSITION, 1);
+                } else {
+                    //in position two
+                    createSmallBools(GamePositions.BOOL_SMALL_Y_SECOND_POSITION, 2);
+                }
+            }
+        }
+    }
+
+    private void createSmallBools(int yPosition, int arrayPosition) {
+        BoolSmallEntity boolSmallEntity = new BoolSmallEntity(game, gameController, stage,
+                GamePositions.BOOL_SMALL_X_POSITION, yPosition, arrayPosition);
     }
 
     private void checkGameOver() {

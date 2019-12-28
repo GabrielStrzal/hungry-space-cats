@@ -43,6 +43,15 @@ public class GameController {
     private FishEntity currentFishEntity;
 
 
+    //smallBool
+    private int smallBools = 0;
+    private List<BoolSmallEntity> boolSmallEntityList;
+
+    //fishBool
+    private int fishBool = 0;
+    private List<FishBoolEntity> fishBoolEntityList;
+
+
     //chips
     private int chipBool = 0;
     private List<ChipBoolEntity> chipBoolEntityList;
@@ -56,6 +65,8 @@ public class GameController {
         chipEntityList = new ArrayList<>();
         boolEntityList = new ArrayList<>();
         chipBoolEntityList = new ArrayList<>();
+        boolSmallEntityList = new ArrayList<>();
+        fishBoolEntityList = new ArrayList<>();
 
         this.hungryEntityList = hungryEntityList;
     }
@@ -86,6 +97,9 @@ public class GameController {
     public void addFish() {
         fish++;
     }
+    public void addSmallBool() {
+        smallBools++;
+    }
 
     public void useEnergy(int usedEnergy) {
         energy -= usedEnergy;
@@ -101,7 +115,19 @@ public class GameController {
 
     public boolean useFish() {
 
-        //TODO: copy from useChips
+        if(smallBools > 0){
+            smallBools--;
+            fish--;
+            fishBool++;
+            int arrayPosition = boolSmallEntityList.get(0).boolUsed();
+            if(arrayPosition == 1){
+                gameScreen.createFishBoolEntity(GamePositions.BOOL_SMALL_Y_POSITION, 1);
+            } else {
+                gameScreen.createFishBoolEntity(GamePositions.BOOL_SMALL_Y_SECOND_POSITION, 2);
+            }
+
+            return true;
+        }
         return false;
     }
 
@@ -130,6 +156,14 @@ public class GameController {
         return false;
     }
 
+    public boolean useFishBool() {
+        if(isThereThisOrderInOrderList(OrderItemEnum.FISH_BOOL)){
+            fishBool--;
+            return true;
+        }
+        return false;
+    }
+
 
     private boolean isThereThisOrderInOrderList(OrderItemEnum orderItemEnum){
 
@@ -153,6 +187,9 @@ public class GameController {
 
     public boolean isPossibleMakeMoreFish() {
         return fish < 1;
+    }
+    public boolean isPossibleMakeMoreSmallBools() {
+        return (smallBools + fishBool) < 2;
     }
 
     public boolean isWaterPositionOneEmpty() {
@@ -196,6 +233,26 @@ public class GameController {
         return true;
     }
 
+    public boolean isBoolSmallPositionOneEmpty() {
+
+        if(getBoolSmallEntityList().isEmpty() && getFishBoolEntityList().isEmpty()){
+            return true;
+        }
+
+        for (BoolSmallEntity entity : getBoolSmallEntityList()) {
+            if(entity.getArrayPosition() == 1) {
+                return false;
+            }
+        }
+
+        for (FishBoolEntity entity : getFishBoolEntityList()) {
+            if(entity.getArrayPosition() == 1) {
+                return false;
+            }
+        }
+        return true;
+
+    }
 
     public void render(Batch batch){
         if(hungryEntityList.isEmpty()){
