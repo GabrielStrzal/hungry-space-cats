@@ -43,7 +43,7 @@ public class TextScreen extends BasicMenuScreen {
             public void clicked(InputEvent event, float x, float y) {
 
                 if(nextScreen == 1){
-                    ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, 1 );
+                    ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, 2 );
                 } else {
                     ScreenManager.getInstance().showScreen( ScreenEnum.MENU_SCREEN, game );
                 }

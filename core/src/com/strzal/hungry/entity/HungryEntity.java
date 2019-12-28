@@ -55,8 +55,8 @@ public class HungryEntity {
     private void renderOrderList(Batch batch) {
         int xPosition = 420;
         for (OrderItemEnum entity: orderList) {
-            batch.draw((Texture) assetManager.get(entity.getImagePath()), xPosition, 355);
-            xPosition += 50;
+            batch.draw((Texture) assetManager.get(entity.getImagePath()), xPosition, 355 );
+            xPosition += 40;
         }
 
     }

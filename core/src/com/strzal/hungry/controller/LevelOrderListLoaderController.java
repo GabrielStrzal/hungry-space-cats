@@ -9,6 +9,9 @@ import com.strzal.hungry.entity.HungryEntity;
 import com.strzal.hungry.entity.OrderItemEnum;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class LevelOrderListLoaderController {
 
@@ -44,10 +47,34 @@ public class LevelOrderListLoaderController {
                 hungryEntityArrayList.add(hungryEntity2);
             case 2:
 
+                hungryEntityArrayList = getRandomOrderSize(10);
+
 
         }
         return hungryEntityArrayList;
 
     }
+
+    public ArrayList<HungryEntity> getRandomOrderSize(int levelSize){
+
+        ArrayList<HungryEntity> hungryEntityArrayList = new ArrayList<>();
+
+        for (int i = 1; i <= levelSize; i++){
+            ArrayList<OrderItemEnum> orderItemEnumListRandom = new ArrayList<>();
+            orderItemEnumListRandom.add(getRandomOrder());
+            orderItemEnumListRandom.add(getRandomOrder());
+            hungryEntityArrayList.add(new HungryEntity(game, stage, (Texture) assetManager.get(ImagesPaths.HUNGRY_CAT), orderItemEnumListRandom));
+        }
+        return hungryEntityArrayList;
+    }
+
+
+    private OrderItemEnum getRandomOrder(){
+
+        List<OrderItemEnum> givenList = Arrays.asList(OrderItemEnum.WATER, OrderItemEnum.CHIPS_BOOL, OrderItemEnum.FISH_BOOL);
+        Random rand = new Random();
+        return givenList.get(rand.nextInt(givenList.size()));
+    }
+
 
 }

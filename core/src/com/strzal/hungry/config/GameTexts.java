@@ -16,7 +16,7 @@ public class GameTexts {
 
             + "They pay us for each meal. \n"
 
-            + "If you can get 10000$ we will be able to find a new place to live. \n \n"
+            + "If you can feed 100 of them we will be able to rest in peace. \n \n"
 
             + "{RAINBOW}You are our only hope.{ENDRAINBOW}";
 
