@@ -12,12 +12,15 @@ public class ImagesPaths {
     public static final String WATTER_DRILL_02 = "images/buttons/watter_drill_02.png";
     public static final String WATTER_DRILL_03 = "images/buttons/watter_drill_03.png";
 
+    public static final String DRILL_01 = "images/buttons/drill_01.png";
     public static final String DRILL_02 = "images/buttons/drill_02.png";
     public static final String DRILL_03 = "images/buttons/drill_03.png";
 
+    public static final String COOKING_PLACE_01 = "images/buttons/cooking_place_1.png";
     public static final String COOKING_PLACE_02 = "images/buttons/cooking_place_2.png";
     public static final String COOKING_PLACE_03 = "images/buttons/cooking_place_3.png";
 
+    public static final String COOKING_FISH_PLACE_01 = "images/buttons/cooking_fish_place_1.png";
     public static final String COOKING_FISH_PLACE_02 = "images/buttons/cooking_fish_place_2.png";
     public static final String COOKING_FISH_PLACE_03 = "images/buttons/cooking_fish_place_3.png";
 

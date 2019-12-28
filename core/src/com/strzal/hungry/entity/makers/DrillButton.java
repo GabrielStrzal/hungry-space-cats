@@ -19,7 +19,7 @@ public class DrillButton extends BasicMakerButton {
 
     @Override
     protected void loadTextures() {
-        textureUp = assetManager.get(ImagesPaths.DRILL_02);
+        textureUp = assetManager.get(ImagesPaths.DRILL_01);
         textureDown = assetManager.get(ImagesPaths.DRILL_02);
         textureChecked = assetManager.get(ImagesPaths.DRILL_03);
     }

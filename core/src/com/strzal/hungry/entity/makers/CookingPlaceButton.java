@@ -20,7 +20,7 @@ public class CookingPlaceButton extends BasicMakerButton {
 
     @Override
     protected void loadTextures() {
-        textureUp = assetManager.get(ImagesPaths.COOKING_PLACE_02);
+        textureUp = assetManager.get(ImagesPaths.COOKING_PLACE_01);
         textureDown = assetManager.get(ImagesPaths.COOKING_PLACE_02);
         textureChecked = assetManager.get(ImagesPaths.COOKING_PLACE_03);
     }

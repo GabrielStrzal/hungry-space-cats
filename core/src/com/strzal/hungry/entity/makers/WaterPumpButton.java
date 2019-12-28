@@ -33,8 +33,8 @@ public class WaterPumpButton extends BasicMakerButton {
 
     @Override
     protected void loadTextures() {
-        textureUp = assetManager.get(ImagesPaths.WATTER_DRILL_02);
-        textureDown = assetManager.get(ImagesPaths.WATTER_DRILL_03);
+        textureUp = assetManager.get(ImagesPaths.WATTER_DRILL_01);
+        textureDown = assetManager.get(ImagesPaths.WATTER_DRILL_02);
         textureChecked = assetManager.get(ImagesPaths.WATTER_DRILL_03);
     }
 
