@@ -49,6 +49,8 @@ public class ImagesPaths {
 
     //Hungry
     public static final String HUNGRY_CAT = "images/hungry/hungry_cat.png";
+    public static final String HUNGRY_CAT_2 = "images/hungry/hungry_cat_2.png";
+    public static final String HUNGRY_CAT_3 = "images/hungry/hungry_cat_3.png";
 
     //Skin
     public static final String UI_SKIN_ATLAS = "skins/default/uiskin.atlas";

@@ -64,7 +64,7 @@ public class LevelOrderListLoaderController {
             ArrayList<OrderItemEnum> orderItemEnumListRandom = new ArrayList<>();
             orderItemEnumListRandom.add(getRandomOrder());
             orderItemEnumListRandom.add(getRandomOrder());
-            hungryEntityArrayList.add(new HungryEntity(game, stage, (Texture) assetManager.get(ImagesPaths.HUNGRY_CAT), orderItemEnumListRandom));
+            hungryEntityArrayList.add(new HungryEntity(game, stage, (Texture) assetManager.get(getRandomHungry()), orderItemEnumListRandom));
         }
         return hungryEntityArrayList;
     }
@@ -73,6 +73,13 @@ public class LevelOrderListLoaderController {
     private OrderItemEnum getRandomOrder(){
 
         List<OrderItemEnum> givenList = Arrays.asList(OrderItemEnum.WATER, OrderItemEnum.CHIPS_BOOL, OrderItemEnum.FISH_BOOL);
+        Random rand = new Random();
+        return givenList.get(rand.nextInt(givenList.size()));
+    }
+
+    private String getRandomHungry(){
+
+        List<String> givenList = Arrays.asList(ImagesPaths.HUNGRY_CAT, ImagesPaths.HUNGRY_CAT_2, ImagesPaths.HUNGRY_CAT_3);
         Random rand = new Random();
         return givenList.get(rand.nextInt(givenList.size()));
     }
