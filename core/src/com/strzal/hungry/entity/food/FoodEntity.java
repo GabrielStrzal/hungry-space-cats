@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.strzal.gdx.BasicGame;
+import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.controller.GameController;
 import com.strzal.hungry.entity.BasicButton;
 import lombok.Getter;
@@ -19,7 +19,7 @@ public class FoodEntity extends BasicButton {
     protected Texture textureUp;
 
 
-    public FoodEntity(BasicGame game, GameController gameController, Stage stage, int xPosition, int yPosition, int arrayPosition) {
+    public FoodEntity(HungrySpaceCats game, GameController gameController, Stage stage, int xPosition, int yPosition, int arrayPosition) {
         super(game, gameController, stage, xPosition, yPosition);
         this.arrayPosition = arrayPosition;
         loadTextures();

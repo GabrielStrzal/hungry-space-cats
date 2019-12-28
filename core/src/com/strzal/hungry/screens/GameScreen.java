@@ -34,7 +34,8 @@ public class GameScreen extends BasicMenuScreen {
     public GameScreen(BasicGame game, int level) {
         super(game);
         levelOrderListLoaderController = new LevelOrderListLoaderController(game, stage);
-        gameController = new GameController(100, levelOrderListLoaderController.getLevelList(level), this, this.game.getGameStats());
+        gameController = new GameController(levelOrderListLoaderController.getLevelList(level), this,
+                this.game.getGameStats(), this.game.getAudioHandler());
         timeController = new TimeController();
     }
 
@@ -214,7 +215,7 @@ public class GameScreen extends BasicMenuScreen {
     private void checkGameOver() {
         if(gameController.getOxygen() <= 0 || gameController.getEnergy() <= 0){
             ScreenManager.getInstance().showScreen(
-                    ScreenEnum.TEXT_SCREEN, game, GameTexts.GAME_OVER_TEXT, GameMode.GAME_OVER
+                    ScreenEnum.TEXT_SCREEN, game, GameTexts.GAME_OVER_TEXT, GameModeEnum.GAME_OVER
             );
         }
     }
@@ -229,12 +230,12 @@ public class GameScreen extends BasicMenuScreen {
             if(game.getGameStats().getWave() >= GameSetting.MAXIMUM_WAVE_IN_GAME_MODE){
                 //Game Completed (You WON)
                 ScreenManager.getInstance().showScreen(
-                        ScreenEnum.TEXT_SCREEN, game, GameTexts.GAME_WON_TEXT, GameMode.YOU_WON
+                        ScreenEnum.TEXT_SCREEN, game, GameTexts.GAME_WON_TEXT, GameModeEnum.YOU_WON
                 );
             } else{
                 //Next wave
                 ScreenManager.getInstance().showScreen(
-                        ScreenEnum.TEXT_SCREEN, game, GameTexts.WAVE_COMPLETE_TEXT, GameMode.LEVEL_COMPLETED
+                        ScreenEnum.TEXT_SCREEN, game, GameTexts.WAVE_COMPLETE_TEXT, GameModeEnum.LEVEL_COMPLETED
                 );
             }
 

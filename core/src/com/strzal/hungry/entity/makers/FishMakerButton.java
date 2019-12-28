@@ -3,7 +3,7 @@ package com.strzal.hungry.entity.makers;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.strzal.gdx.BasicGame;
+import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.config.GameSetting;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
@@ -11,7 +11,7 @@ import com.strzal.hungry.controller.GameController;
 
 public class FishMakerButton extends BasicMakerButton {
 
-    public FishMakerButton(BasicGame game, final GameController gameController, Stage stage, int xPosition, int yPosition) {
+    public FishMakerButton(HungrySpaceCats game, final GameController gameController, Stage stage, int xPosition, int yPosition) {
         super(game, gameController, stage, xPosition, yPosition);
 
         cookingTime = GameSetting.FISH_MAKING_PLACE_TIME;

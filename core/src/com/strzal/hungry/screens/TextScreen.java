@@ -17,9 +17,9 @@ import com.strzal.hungry.screenManager.ScreenEnum;
 public class TextScreen extends BasicMenuScreen {
 
     private String textToBeDisplayed;
-    private GameMode gameMode;
+    private GameModeEnum gameMode;
 
-    public TextScreen(BasicGame game, String textToBeDisplayed, GameMode gameMode) {
+    public TextScreen(BasicGame game, String textToBeDisplayed, GameModeEnum gameMode) {
         super(game);
         this.textToBeDisplayed = textToBeDisplayed;
         this.gameMode = gameMode;
@@ -42,6 +42,8 @@ public class TextScreen extends BasicMenuScreen {
         playButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+
+                game.getAudioHandler().playButtonSound();
 
                 // Cases for Text Screen
                 // menu > game (story mode)

@@ -3,13 +3,13 @@ package com.strzal.hungry.entity.food;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.strzal.gdx.BasicGame;
+import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
 
 public class FishBoolEntity extends FoodEntity {
 
-    public FishBoolEntity(BasicGame game, GameController gameController, Stage stage, int xPosition, int yPosition, int arrayPosition) {
+    public FishBoolEntity(HungrySpaceCats game, GameController gameController, Stage stage, int xPosition, int yPosition, int arrayPosition) {
         super(game, gameController, stage, xPosition, yPosition, arrayPosition);
 
         gameController.getFishBoolEntityList().add(this);
@@ -31,6 +31,7 @@ public class FishBoolEntity extends FoodEntity {
 
     private void buttonClicked() {
         if (gameController.useFishBool()) {
+            game.getAudioHandler().playKittenSound();
             gameController.getFishBoolEntityList().remove(this);
             imageButton.remove();
         }

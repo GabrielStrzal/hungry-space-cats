@@ -13,8 +13,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.strzal.gdx.BasicGame;
 import com.strzal.gdx.screenManager.ScreenManager;
+import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.config.GameConfig;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
@@ -26,7 +26,7 @@ public class Hud implements Disposable {
     private AssetManager assetManager;
     @Getter
     private Stage stage;
-    private BasicGame game;
+    private HungrySpaceCats game;
     private GameController gameController;
 
     private TextureAtlas atlas;
@@ -50,7 +50,7 @@ public class Hud implements Disposable {
     private static float MENU_LABEL_X_POSITION = 740;
 
 
-    public Hud(BasicGame game, GameController gameController){
+    public Hud(HungrySpaceCats game, GameController gameController){
         this.game = game;
         this.gameController = gameController;
         stage = new Stage(new FitViewport(GameConfig.SCREEN_WIDTH, GameConfig.SCREEN_HEIGHT));
@@ -73,6 +73,7 @@ public class Hud implements Disposable {
         menuButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.getAudioHandler().playButtonSound();
 
                 ScreenManager.getInstance().showScreen(
                         ScreenEnum.MENU_SCREEN, game

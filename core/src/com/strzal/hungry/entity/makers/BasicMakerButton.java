@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.strzal.gdx.BasicGame;
+import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.controller.GameController;
 import com.strzal.hungry.entity.BasicButton;
 
@@ -23,7 +23,7 @@ public class BasicMakerButton extends BasicButton {
     protected ImageButton imageButton;
 
 
-    public BasicMakerButton(BasicGame game, final GameController gameController, Stage stage, int xPosition, int yPosition) {
+    public BasicMakerButton(final HungrySpaceCats game, final GameController gameController, Stage stage, int xPosition, int yPosition) {
         super(game, gameController, stage, xPosition, yPosition);
 
         loadTextures();
@@ -37,6 +37,7 @@ public class BasicMakerButton extends BasicButton {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 super.clicked(event, x, y);
+                game.getAudioHandler().playButtonSound();
                 buttonClicked();
             }
         });

@@ -1,6 +1,7 @@
 package com.strzal.hungry.controller;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.strzal.hungry.audio.AudioHandler;
 import com.strzal.hungry.config.GamePositions;
 import com.strzal.hungry.config.GameSetting;
 import com.strzal.hungry.config.GameStats;
@@ -18,6 +19,7 @@ public class GameController {
 
     GameScreen gameScreen;
     GameStats gameStats;
+    AudioHandler audioHandler;
 
     @Setter
     private long energy;
@@ -59,9 +61,10 @@ public class GameController {
     private int chipBool = 0;
     private List<ChipBoolEntity> chipBoolEntityList;
 
-    public GameController(int cash, ArrayList<HungryEntity> hungryEntityList, GameScreen gameScreen, GameStats gameStats){
+    public GameController(ArrayList<HungryEntity> hungryEntityList, GameScreen gameScreen, GameStats gameStats, AudioHandler audioHandler){
         this.gameScreen = gameScreen;
         this.gameStats = gameStats;
+        this.audioHandler = audioHandler;
         oxygen = 100;
         energy = 100;
         waterEntityList = new ArrayList<>();
@@ -262,6 +265,7 @@ public class GameController {
         currentHungryEntity.render(batch);
 
         if(currentHungryEntity.hasOrderBeenCompleted()){
+            audioHandler.playOrderCompleteSound();
             hungryEntityList.remove(currentHungryEntity);
             gameStats.addCash(GameSetting.CASH_PER_ORDER);
             currentHungryEntity = null;

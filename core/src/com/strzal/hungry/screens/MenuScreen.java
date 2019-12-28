@@ -43,10 +43,10 @@ public class MenuScreen extends BasicMenuScreen {
         playButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-
+                game.getAudioHandler().playButtonSound();
                 game.setGameStats(new GameStats());
                 ScreenManager.getInstance().showScreen(
-                        ScreenEnum.TEXT_SCREEN, game, GameTexts.START_TEXT, GameMode.STORY_MODE
+                        ScreenEnum.TEXT_SCREEN, game, GameTexts.START_TEXT, GameModeEnum.STORY_MODE
                 );
             }
         });
@@ -54,9 +54,10 @@ public class MenuScreen extends BasicMenuScreen {
         playEndlessButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.getAudioHandler().playButtonSound();
                 game.setGameStats(new GameStats());
                 ScreenManager.getInstance().showScreen(
-                        ScreenEnum.TEXT_SCREEN, game, GameTexts.ENDLESS_TEXT, GameMode.ENDLESS_MODE
+                        ScreenEnum.TEXT_SCREEN, game, GameTexts.ENDLESS_TEXT, GameModeEnum.ENDLESS_MODE
                 );
             }
         });
@@ -64,6 +65,7 @@ public class MenuScreen extends BasicMenuScreen {
         exitButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
+                game.getAudioHandler().playButtonSound();
                 Gdx.app.exit();
             }
         });

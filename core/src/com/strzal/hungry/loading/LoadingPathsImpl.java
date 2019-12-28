@@ -2,6 +2,7 @@ package com.strzal.hungry.loading;
 
 import com.strzal.gdx.loading.LoadingPaths;
 import com.strzal.hungry.constants.ImagesPaths;
+import com.strzal.hungry.constants.SoundPaths;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,7 +88,16 @@ public class LoadingPathsImpl implements LoadingPaths {
 
     @Override
     public List<String> getSoundPaths() {
-        return null;
+        List<String> list = new ArrayList<>();
+
+        //Menu
+        list.add(SoundPaths.CORRECT_AUDIO);
+        list.add(SoundPaths.WRONG_AUDIO);
+        list.add(SoundPaths.MENU_BUTTON_AUDIO);
+        list.add(SoundPaths.KITTEN_MEOW_AUDIO);
+        list.add(SoundPaths.ORDER_COMPLETE_AUDIO);
+
+        return list;
     }
 
 }

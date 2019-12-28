@@ -1,6 +1,6 @@
 package com.strzal.hungry.screens;
 
-public enum GameMode {
+public enum GameModeEnum {
     STORY_MODE,
     ENDLESS_MODE,
     GAME_OVER,

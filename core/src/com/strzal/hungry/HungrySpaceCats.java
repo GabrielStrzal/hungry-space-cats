@@ -3,6 +3,7 @@ package com.strzal.hungry;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.strzal.gdx.BasicGame;
 import com.strzal.gdx.screenManager.ScreenManager;
+import com.strzal.hungry.audio.AudioHandler;
 import com.strzal.hungry.config.GameConfig;
 import com.strzal.hungry.config.GameStats;
 import com.strzal.hungry.loading.LoadingPathsImpl;
@@ -15,6 +16,8 @@ public class HungrySpaceCats extends BasicGame {
 	SpriteBatch batch;
 	@Getter@Setter
 	GameStats gameStats;
+	@Getter
+	AudioHandler audioHandler;
 
 	@Override
 	public void create () {
@@ -23,6 +26,7 @@ public class HungrySpaceCats extends BasicGame {
 
 		batch = new SpriteBatch();
 		loadingPaths = new LoadingPathsImpl();
+		audioHandler = new AudioHandler(this);
 
 		ScreenManager.getInstance().initialize(this);
 		ScreenManager.getInstance()
