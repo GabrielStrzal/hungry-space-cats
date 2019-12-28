@@ -11,7 +11,8 @@ import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
 import com.strzal.hungry.controller.LevelOrderListLoaderController;
 import com.strzal.hungry.controller.TimeController;
-import com.strzal.hungry.entity.*;
+import com.strzal.hungry.entity.food.*;
+import com.strzal.hungry.entity.makers.*;
 import com.strzal.hungry.hud.Hud;
 import com.strzal.hungry.screenManager.ScreenEnum;
 

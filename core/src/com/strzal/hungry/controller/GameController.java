@@ -3,6 +3,7 @@ package com.strzal.hungry.controller;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.strzal.hungry.config.GamePositions;
 import com.strzal.hungry.entity.*;
+import com.strzal.hungry.entity.food.*;
 import com.strzal.hungry.screens.GameScreen;
 import lombok.Getter;
 import lombok.Setter;
