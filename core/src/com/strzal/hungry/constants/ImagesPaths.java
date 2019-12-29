@@ -21,6 +21,10 @@ public class ImagesPaths {
     public static final String COOKING_PLACE_02 = "images/buttons/cooking_place_2.png";
     public static final String COOKING_PLACE_03 = "images/buttons/cooking_place_3.png";
 
+    public static final String COOKING_SMALL_PLACE_01 = "images/buttons/cooking_place_small_1.png";
+    public static final String COOKING_SMALL_PLACE_02 = "images/buttons/cooking_place_small_2.png";
+    public static final String COOKING_SMALL_PLACE_03 = "images/buttons/cooking_place_small_3.png";
+
     public static final String COOKING_FISH_PLACE_01 = "images/buttons/cooking_fish_place_1.png";
     public static final String COOKING_FISH_PLACE_02 = "images/buttons/cooking_fish_place_2.png";
     public static final String COOKING_FISH_PLACE_03 = "images/buttons/cooking_fish_place_3.png";
