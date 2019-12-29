@@ -8,22 +8,18 @@ import com.strzal.hungry.config.GameStats;
 import com.strzal.hungry.entity.*;
 import com.strzal.hungry.entity.food.*;
 import com.strzal.hungry.screens.GameScreen;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
+
 public class GameController {
 
     GameScreen gameScreen;
     GameStats gameStats;
     AudioHandler audioHandler;
 
-    @Setter
     private long energy;
-    @Setter
     private long oxygen;
 
     private long oxygenForMeter;
@@ -46,7 +42,6 @@ public class GameController {
 
     //fish
     private int fish = 0;
-    @Setter
     private FishEntity currentFishEntity;
 
 
@@ -284,5 +279,109 @@ public class GameController {
             gameStats.addCash(GameSetting.CASH_PER_ORDER);
             currentHungryEntity = null;
         }
+    }
+
+    public GameScreen getGameScreen() {
+        return gameScreen;
+    }
+
+    public GameStats getGameStats() {
+        return gameStats;
+    }
+
+    public AudioHandler getAudioHandler() {
+        return audioHandler;
+    }
+
+    public long getEnergy() {
+        return energy;
+    }
+
+    public long getOxygen() {
+        return oxygen;
+    }
+
+    public long getOxygenForMeter() {
+        return oxygenForMeter;
+    }
+
+    public int getWater() {
+        return water;
+    }
+
+    public List<WaterEntity> getWaterEntityList() {
+        return waterEntityList;
+    }
+
+    public ArrayList<HungryEntity> getHungryEntityList() {
+        return hungryEntityList;
+    }
+
+    public HungryEntity getCurrentHungryEntity() {
+        return currentHungryEntity;
+    }
+
+    public boolean isCurrentLevelCompleted() {
+        return isCurrentLevelCompleted;
+    }
+
+    public int getChips() {
+        return chips;
+    }
+
+    public List<ChipEntity> getChipEntityList() {
+        return chipEntityList;
+    }
+
+    public int getBools() {
+        return bools;
+    }
+
+    public List<BoolEntity> getBoolEntityList() {
+        return boolEntityList;
+    }
+
+    public int getFish() {
+        return fish;
+    }
+
+    public FishEntity getCurrentFishEntity() {
+        return currentFishEntity;
+    }
+
+    public int getSmallBools() {
+        return smallBools;
+    }
+
+    public List<BoolSmallEntity> getBoolSmallEntityList() {
+        return boolSmallEntityList;
+    }
+
+    public int getFishBool() {
+        return fishBool;
+    }
+
+    public List<FishBoolEntity> getFishBoolEntityList() {
+        return fishBoolEntityList;
+    }
+
+    public int getChipBool() {
+        return chipBool;
+    }
+
+    public List<ChipBoolEntity> getChipBoolEntityList() {
+        return chipBoolEntityList;
+    }
+
+    public void setEnergy(long energy) {
+        this.energy = energy;
+    }
+
+    public void setOxygen(long oxygen) {
+        this.oxygen = oxygen;
+    }
+
+    public void setCurrentFishEntity(FishEntity currentFishEntity) {
+        this.currentFishEntity = currentFishEntity;
     }
 }

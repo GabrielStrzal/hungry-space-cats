@@ -3,7 +3,7 @@ package com.strzal.hungry.audio;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.strzal.gdx.BasicGame;
+import com.strzal.hungry.BasicGame;
 import com.strzal.hungry.constants.SoundPaths;
 
 public class AudioHandler {

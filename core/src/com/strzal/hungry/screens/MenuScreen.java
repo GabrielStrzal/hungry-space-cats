@@ -8,12 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.strzal.gdx.BasicGame;
-import com.strzal.gdx.screenManager.ScreenManager;
+import com.strzal.hungry.BasicGame;
 import com.strzal.hungry.config.GameStats;
 import com.strzal.hungry.config.GameTexts;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.screenManager.ScreenEnum;
+import com.strzal.hungry.screenManager.ScreenManager;
 
 public class MenuScreen extends BasicMenuScreen {
 

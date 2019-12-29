@@ -3,7 +3,6 @@ package com.strzal.hungry.controller;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.strzal.gdx.BasicGame;
 import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.config.GameSetting;
 import com.strzal.hungry.constants.ImagesPaths;

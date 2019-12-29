@@ -13,18 +13,16 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.strzal.gdx.screenManager.ScreenManager;
 import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.config.GameConfig;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
 import com.strzal.hungry.screenManager.ScreenEnum;
-import lombok.Getter;
+import com.strzal.hungry.screenManager.ScreenManager;
 
 public class Hud implements Disposable {
 
     private AssetManager assetManager;
-    @Getter
     private Stage stage;
     private HungrySpaceCats game;
     private GameController gameController;
@@ -170,5 +168,9 @@ public class Hud implements Disposable {
     @Override
     public void dispose() {
         shapeRenderer.dispose();
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 }

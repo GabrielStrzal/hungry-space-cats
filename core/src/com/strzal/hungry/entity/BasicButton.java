@@ -3,11 +3,8 @@ package com.strzal.hungry.entity;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.strzal.gdx.buttons.ButtonsUtils;
 import com.strzal.hungry.HungrySpaceCats;
-import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
-import lombok.Getter;
 
 public class BasicButton {
 
@@ -16,9 +13,6 @@ public class BasicButton {
     protected Stage stage;
     protected AssetManager assetManager;
 
-    protected ButtonsUtils buttonsUtils;
-
-    @Getter
     protected int xPosition;
     protected int yPosition;
 
@@ -35,7 +29,6 @@ public class BasicButton {
         this.xPosition = xPosition;
         this.yPosition = yPosition;
 
-        buttonsUtils = new ButtonsUtils(assetManager, ImagesPaths.TRANSPARENT);
     }
 
     public void render(){
@@ -51,5 +44,9 @@ public class BasicButton {
         }else{
             return false;
         }
+    }
+
+    public int getxPosition() {
+        return xPosition;
     }
 }
