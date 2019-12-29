@@ -8,13 +8,13 @@ public class GameTexts {
     public static final String START_TEXT =
             "{COLOR=GREEN}We need your help!{WAIT} \n"
 
-            + "{COLOR=WHITE} Hungry for worlds to eat, {COLOR=RED}{SICK} SPACE CATS {ENDSICK}{COLOR=WHITE} came and were eating {SICK}everything{ENDSICK}. {WAIT} \n"
+            + "{COLOR=WHITE} Hungry {COLOR=RED}{SICK} SPACE CATS {ENDSICK}{COLOR=WHITE} are eating {SICK}everything{ENDSICK}. {WAIT} \n"
 
-            + "To stop them we started providing {COLOR=GREEN}TOP MEALS, {COLOR=WHITE}made from our planet itself. \n"
+            + "Each week they come here to eat our PLANET itself! \n"
 
-            + "But we need {RAINBOW}YOU{ENDRAINBOW} to make these special meals! \n"
+            + "To stop them we started providing {COLOR=GREEN}TOP MEALS, {COLOR=WHITE}made from our planet. \n"
 
-            + "They pay us for each meal. \n"
+            + "But we need {RAINBOW}YOU{ENDRAINBOW} to make these special meals! We will {RAINBOW}pay{ENDRAINBOW} you for each meal. \n"
 
             + "If you can feed them for {COLOR=RED}{VAR=weeks}{COLOR=WHITE} weeks we will be able to rest in peace. \n \n"
 
