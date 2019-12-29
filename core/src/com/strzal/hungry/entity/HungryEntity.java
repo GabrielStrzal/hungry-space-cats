@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.strzal.gdx.BasicGame;
+import com.strzal.hungry.config.GamePositions;
 
 import java.util.ArrayList;
 
@@ -50,20 +51,16 @@ public class HungryEntity {
     }
 
     private void renderHungryEntity(Batch batch) {
-        batch.draw(hungryEntityTexture, 300, 340);
+        batch.draw(hungryEntityTexture, GamePositions.HUNGRY_CATS_X_POSITION, GamePositions.HUNGRY_CATS_Y_POSITION);
     }
     private void renderOrderList(Batch batch) {
-        int xPosition = 420;
+
+        int xPosition = GamePositions.HUNGRY_MEAL_X_POSITION;
         for (OrderItemEnum entity: orderList) {
-            batch.draw((Texture) assetManager.get(entity.getImagePath()), xPosition, 355 );
-            xPosition += 40;
+            Texture texture = assetManager.get(entity.getImagePath());
+            batch.draw(texture, xPosition, GamePositions.HUNGRY_MEAL_Y_POSITION);
+            xPosition += GamePositions.HUNGRY_MEAL_POSITION_TAB;
         }
 
-    }
-
-    public void finishAndDistroy() {
-        //add reward
-
-        //remove self
     }
 }

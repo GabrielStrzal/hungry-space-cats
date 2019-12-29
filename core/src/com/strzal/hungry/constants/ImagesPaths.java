@@ -54,6 +54,11 @@ public class ImagesPaths {
     public static final String BOOL_FISH = "images/buttons/bool_fish.png";
     public static final String BOOL_FISH_PRESSED = "images/buttons/bool_fish_pressed.png";
 
+    public static final String HUNGRY_WATTER = "images/buttons/hungry_watter.png";
+    public static final String HUNGRY_BOOL_CHIPS = "images/buttons/hungry_bool_chips.png";
+    public static final String HUNGRY_BOOL_FISH = "images/buttons/hungry_bool_fish.png";
+
+
     //Hungry
     public static final String HUNGRY_CAT = "images/hungry/hungry_cat.png";
     public static final String HUNGRY_CAT_2 = "images/hungry/hungry_cat_2.png";

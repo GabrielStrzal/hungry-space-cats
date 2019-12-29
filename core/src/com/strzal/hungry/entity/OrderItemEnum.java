@@ -5,9 +5,9 @@ import lombok.Getter;
 
 public enum OrderItemEnum {
 
-    WATER(ImagesPaths.WATTER),
-    CHIPS_BOOL(ImagesPaths.BOOL_CHIPS),
-    FISH_BOOL(ImagesPaths.BOOL_FISH);
+    WATER(ImagesPaths.HUNGRY_WATTER),
+    CHIPS_BOOL(ImagesPaths.HUNGRY_BOOL_CHIPS),
+    FISH_BOOL(ImagesPaths.HUNGRY_BOOL_FISH);
 
     @Getter
     private final String imagePath;

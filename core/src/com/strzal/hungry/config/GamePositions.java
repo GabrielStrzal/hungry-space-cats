@@ -41,6 +41,12 @@ public class GamePositions {
     public static final int FISH_X_POSITION = 710;
     public static final int FISH_Y_POSITION = 90;
 
+    public static final int HUNGRY_CATS_X_POSITION = 220;
+    public static final int HUNGRY_CATS_Y_POSITION = 280;
+
+    public static final int HUNGRY_MEAL_X_POSITION = 415;
+    public static final int HUNGRY_MEAL_Y_POSITION = 305;
+    public static final int HUNGRY_MEAL_POSITION_TAB = 75;
 
     private GamePositions(){}
 }
