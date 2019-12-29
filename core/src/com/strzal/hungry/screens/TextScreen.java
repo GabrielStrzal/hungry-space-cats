@@ -10,7 +10,9 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.rafaskoberg.gdx.typinglabel.TypingLabel;
 import com.strzal.gdx.BasicGame;
 import com.strzal.gdx.screenManager.ScreenManager;
+import com.strzal.hungry.config.GameSetting;
 import com.strzal.hungry.constants.ImagesPaths;
+import com.strzal.hungry.handler.LevelStats;
 import com.strzal.hungry.screenManager.ScreenEnum;
 
 
@@ -102,6 +104,16 @@ public class TextScreen extends BasicMenuScreen {
 
         // Create a TypingLabel instance with your custom text
         label = new TypingLabel(textToBeDisplayed, skin);
+
+        if(gameMode == GameModeEnum.GAME_STATS){
+            LevelStats stats = game.getGameStatsHandler().getSavedData();
+            label.setVariable("timesPlayed", "" + stats.getTotalTimesPlayed());
+            label.setVariable("week", "" + stats.getWeek());
+            label.setVariable("cash", "" + stats.getHighScore());
+        }
+        if(gameMode == GameModeEnum.STORY_MODE){
+            label.setVariable("weeks", "" + GameSetting.MAXIMUM_WAVE_IN_GAME_MODE);
+        }
 
         //Add buttons to table
         mainTable.add(label);

@@ -5,5 +5,6 @@ public enum GameModeEnum {
     ENDLESS_MODE,
     GAME_OVER,
     LEVEL_COMPLETED,
-    YOU_WON;
+    YOU_WON,
+    GAME_STATS;
 }

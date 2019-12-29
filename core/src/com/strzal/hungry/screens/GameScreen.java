@@ -15,6 +15,7 @@ import com.strzal.hungry.controller.LevelOrderListLoaderController;
 import com.strzal.hungry.controller.TimeController;
 import com.strzal.hungry.entity.food.*;
 import com.strzal.hungry.entity.makers.*;
+import com.strzal.hungry.handler.LevelStats;
 import com.strzal.hungry.hud.Hud;
 import com.strzal.hungry.screenManager.ScreenEnum;
 
@@ -224,6 +225,8 @@ public class GameScreen extends BasicMenuScreen {
 
     private void checkGameOver() {
         if(gameController.getOxygen() <= 0 || gameController.getEnergy() <= 0){
+            game.getGameStatsHandler().saveLevelData(
+                    new LevelStats(1, game.getGameStats().getWave(),game.getGameStats().getCash(), false));
             ScreenManager.getInstance().showScreen(
                     ScreenEnum.TEXT_SCREEN, game, GameTexts.GAME_OVER_TEXT, GameModeEnum.GAME_OVER
             );
@@ -239,6 +242,8 @@ public class GameScreen extends BasicMenuScreen {
             //Level completed
             if(game.getGameStats().getWave() >= GameSetting.MAXIMUM_WAVE_IN_GAME_MODE){
                 //Game Completed (You WON)
+                game.getGameStatsHandler().saveLevelData(
+                        new LevelStats(1,game.getGameStats().getWave(),game.getGameStats().getCash(), true));
                 ScreenManager.getInstance().showScreen(
                         ScreenEnum.TEXT_SCREEN, game, GameTexts.GAME_WON_TEXT, GameModeEnum.YOU_WON
                 );

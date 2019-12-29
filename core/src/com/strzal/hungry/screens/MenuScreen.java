@@ -1,6 +1,7 @@
 package com.strzal.hungry.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -35,7 +36,7 @@ public class MenuScreen extends BasicMenuScreen {
         //Create buttons
         TextButton playButton = new TextButton("Play", skin);
         TextButton playEndlessButton = new TextButton("Play Endless Mode", skin);
-        TextButton exitButton = new TextButton("Exit", skin);
+        TextButton gameStatsButton = new TextButton("Game Stats", skin);
 
         Image background = new Image((Texture) game.getAssetManager().get(ImagesPaths.MENU_BACKGROUND));
 
@@ -51,22 +52,29 @@ public class MenuScreen extends BasicMenuScreen {
             }
         });
 
-        playEndlessButton.addListener(new ClickListener() {
-            @Override
-            public void clicked(InputEvent event, float x, float y) {
-                game.getAudioHandler().playButtonSound();
-                game.setGameStats(new GameStats());
-                ScreenManager.getInstance().showScreen(
-                        ScreenEnum.TEXT_SCREEN, game, GameTexts.ENDLESS_TEXT, GameModeEnum.ENDLESS_MODE
-                );
-            }
-        });
+        // Only unlock if game finished
+        if(game.getGameStatsHandler().getSavedData().isGameWon()) {
+            playEndlessButton.addListener(new ClickListener() {
+                @Override
+                public void clicked(InputEvent event, float x, float y) {
+                    game.getAudioHandler().playButtonSound();
+                    game.setGameStats(new GameStats());
+                    ScreenManager.getInstance().showScreen(
+                            ScreenEnum.TEXT_SCREEN, game, GameTexts.ENDLESS_TEXT, GameModeEnum.ENDLESS_MODE
+                    );
+                }
+            });
+        } else {
+            playEndlessButton.setColor(Color.GRAY);
+        }
 
-        exitButton.addListener(new ClickListener() {
+        gameStatsButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.getAudioHandler().playButtonSound();
-                Gdx.app.exit();
+                ScreenManager.getInstance().showScreen(
+                        ScreenEnum.TEXT_SCREEN, game, GameTexts.GAME_STATS_TEXT, GameModeEnum.GAME_STATS
+                );
             }
         });
 
@@ -75,7 +83,7 @@ public class MenuScreen extends BasicMenuScreen {
         mainTable.row();
         mainTable.add(playEndlessButton);
         mainTable.row();
-        mainTable.add(exitButton);
+        mainTable.add(gameStatsButton);
 
         stage.addActor(background);
         //Add table to stage
