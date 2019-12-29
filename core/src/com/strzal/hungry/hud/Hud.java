@@ -118,7 +118,16 @@ public class Hud implements Disposable {
 
         drawEnergyBar();
         drawOxygenBar();
+        updateAlarmSound();
 
+    }
+
+    private void updateAlarmSound() {
+        if(gameController.getOxygen() < 20 || gameController.getEnergy() < 20 && !gameController.isGameOver()){
+            game.getAudioHandler().playAlarmSound();
+        } else {
+            game.getAudioHandler().stopAlarmSound();
+        }
     }
 
     private void drawOxygenBar() {

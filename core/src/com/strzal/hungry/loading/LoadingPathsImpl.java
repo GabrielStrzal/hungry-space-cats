@@ -113,6 +113,7 @@ public class LoadingPathsImpl implements LoadingPaths {
         list.add(SoundPaths.MENU_BUTTON_AUDIO);
         list.add(SoundPaths.KITTEN_MEOW_AUDIO);
         list.add(SoundPaths.ORDER_COMPLETE_AUDIO);
+        list.add(SoundPaths.ALARM_AUDIO);
 
         return list;
     }

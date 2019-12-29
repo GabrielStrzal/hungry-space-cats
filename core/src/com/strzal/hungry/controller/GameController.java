@@ -58,6 +58,9 @@ public class GameController {
     private int chipBool = 0;
     private List<ChipBoolEntity> chipBoolEntityList;
 
+    //gameOver
+    private boolean gameOver;
+
     public GameController(ArrayList<HungryEntity> hungryEntityList, GameScreen gameScreen, GameStats gameStats, AudioHandler audioHandler){
         this.gameScreen = gameScreen;
         this.gameStats = gameStats;
@@ -383,5 +386,13 @@ public class GameController {
 
     public void setCurrentFishEntity(FishEntity currentFishEntity) {
         this.currentFishEntity = currentFishEntity;
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
     }
 }

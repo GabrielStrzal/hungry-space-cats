@@ -40,6 +40,7 @@ public class GameScreen extends BasicMenuScreen {
         gameController = new GameController(levelOrderListLoaderController.getLevelList(level), this,
                 this.game.getGameStats(), this.game.getAudioHandler());
         timeController = new TimeController();
+        gameController.setGameOver(false);
     }
 
 
@@ -225,6 +226,8 @@ public class GameScreen extends BasicMenuScreen {
 
     private void checkGameOver() {
         if(gameController.getOxygen() <= 0 || gameController.getEnergy() <= 0){
+            game.getAudioHandler().stopAlarmSound();
+            gameController.setGameOver(true);
             game.getGameStatsHandler().saveLevelData(
                     new LevelStats(1, game.getGameStats().getWave(),game.getGameStats().getCash(), false));
             ScreenManager.getInstance().showScreen(
@@ -238,6 +241,8 @@ public class GameScreen extends BasicMenuScreen {
         if(gameController.isCurrentLevelCompleted()){
 
             game.getGameStats().addWave();
+            game.getAudioHandler().stopAlarmSound();
+            gameController.setGameOver(true);
 
             //Level completed
             if(game.getGameStats().getWave() >= GameSetting.MAXIMUM_WAVE_IN_GAME_MODE){

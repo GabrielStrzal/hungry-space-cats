@@ -14,6 +14,9 @@ public class AudioHandler {
     long gameSoundID;
     float volume = 1;// 0.3f;
 
+    Sound alarmSound;
+    Boolean loaded = false;
+
     public AudioHandler(BasicGame game){
         game = game;
         assetManager = game.getAssetManager();
@@ -49,4 +52,25 @@ public class AudioHandler {
 //        if(game.getGameStatsHandler().isAudioOn())
         sound.play(volume * 3);
     }
+
+    public void playAlarmSound()  {
+        loadAlarmSound();
+        alarmSound.resume();
+    }
+
+    public void stopAlarmSound(){
+        loadAlarmSound();
+        alarmSound.pause();
+    }
+
+    private void loadAlarmSound(){
+        if(!loaded) {
+            alarmSound = assetManager.get(SoundPaths.ALARM_AUDIO);
+            alarmSound.loop(volume);
+            alarmSound.pause();
+            loaded = true;
+        }
+    }
+
+
 }
