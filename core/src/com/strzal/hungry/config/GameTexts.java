@@ -22,9 +22,11 @@ public class GameTexts {
 
 
     public static final String ENDLESS_TEXT =
-            "{FASTER} \n \n \n{COLOR=RED}" +
-                    "                                              " +
-                    "{SHAKE}This is ENDLESS MODE...how long can you last? {ENDSHAKE}";
+            "{FASTER} \n \n {COLOR=WHITE}" +
+                    "                                                           " +
+                    "This is {COLOR=RED}{SHAKE}ENDLESS MODE{ENDSHAKE}\n\n" +
+                    "                                                        " +
+                    "{COLOR=WHITE}...how long can you last? ";
 
 
     public static final String GAME_OVER_TEXT =
@@ -47,7 +49,9 @@ public class GameTexts {
     public static final String GAME_WON_TEXT =
             "{FASTER} \n \n \n" +
                     "                                                                  " +
-                    "{RAINBOW}YOU WON {ENDRAINBOW}";
+                    "{RAINBOW}YOU WON {ENDRAINBOW} \n \n" +
+                    "               " +
+                    "{COLOR=WHITE}You have unlocked the {COLOR=RED}{SHAKE}ENDLESS MODE! {ENDSHAKE}{COLOR=WHITE}How long can you last? ";
 
     public static final String GAME_STATS_TEXT =
             "{FASTER} \n" +

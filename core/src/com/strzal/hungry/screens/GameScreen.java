@@ -33,14 +33,26 @@ public class GameScreen extends BasicMenuScreen {
     private OxygenMakerPlaceButton oxygenMakerPlaceButton;
 
     private LevelOrderListLoaderController levelOrderListLoaderController;
+    private int maxWaves;
 
-    public GameScreen(BasicGame game, int level) {
+
+    public GameScreen(BasicGame game, boolean isEndless) {
         super(game);
         levelOrderListLoaderController = new LevelOrderListLoaderController(this.game, stage);
-        gameController = new GameController(levelOrderListLoaderController.getLevelList(level), this,
+        gameController = new GameController(levelOrderListLoaderController.getLevelList(), this,
                 this.game.getGameStats(), this.game.getAudioHandler());
         timeController = new TimeController();
         gameController.setGameOver(false);
+        gameController.setEndless(isEndless);
+        setMaxWave();
+    }
+
+    private void setMaxWave() {
+        if(gameController.isEndless()){
+            maxWaves = GameSetting.MAXIMUM_ENDLESS_WAVE_IN_GAME_MODE;
+        } else {
+            maxWaves = GameSetting.MAXIMUM_WAVE_IN_GAME_MODE;
+        }
     }
 
 
@@ -245,7 +257,7 @@ public class GameScreen extends BasicMenuScreen {
             gameController.setGameOver(true);
 
             //Level completed
-            if(game.getGameStats().getWave() >= GameSetting.MAXIMUM_WAVE_IN_GAME_MODE){
+            if(game.getGameStats().getWave() > maxWaves){
                 //Game Completed (You WON)
                 game.getGameStatsHandler().saveLevelData(
                         new LevelStats(1,game.getGameStats().getWave(),game.getGameStats().getCash(), true));
@@ -254,9 +266,16 @@ public class GameScreen extends BasicMenuScreen {
                 );
             } else{
                 //Next wave
-                ScreenManager.getInstance().showScreen(
-                        ScreenEnum.TEXT_SCREEN, game, GameTexts.WAVE_COMPLETE_TEXT, GameModeEnum.LEVEL_COMPLETED
-                );
+                if(gameController.isEndless()){
+                    ScreenManager.getInstance().showScreen(
+                            ScreenEnum.TEXT_SCREEN, game, GameTexts.WAVE_COMPLETE_TEXT, GameModeEnum.LEVEL_COMPLETED_ENDLESS
+                    );
+                } else {
+                    ScreenManager.getInstance().showScreen(
+                            ScreenEnum.TEXT_SCREEN, game, GameTexts.WAVE_COMPLETE_TEXT, GameModeEnum.LEVEL_COMPLETED
+                    );
+                }
+
             }
         }
     }

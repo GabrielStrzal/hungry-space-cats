@@ -31,6 +31,7 @@ public class GameController {
     private HungryEntity currentHungryEntity;
 
     private boolean isCurrentLevelCompleted = false;
+    private boolean isEndless = false;
 
     //chips
     private int chips = 0;
@@ -394,5 +395,13 @@ public class GameController {
 
     public void setGameOver(boolean gameOver) {
         this.gameOver = gameOver;
+    }
+
+    public boolean isEndless() {
+        return isEndless;
+    }
+
+    public void setEndless(boolean endless) {
+        isEndless = endless;
     }
 }

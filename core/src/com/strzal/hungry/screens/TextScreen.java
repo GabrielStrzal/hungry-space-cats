@@ -55,13 +55,16 @@ public class TextScreen extends BasicMenuScreen {
                 // game > level completed (next level, but this should not be here)
                 switch(gameMode){
                     case STORY_MODE:
-                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, 2 );
+                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, false );
                         break;
                     case ENDLESS_MODE:
-                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, 2 );
+                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, true );
                         break;
                     case LEVEL_COMPLETED:
-                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, 2 );
+                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, false );
+                        break;
+                    case LEVEL_COMPLETED_ENDLESS:
+                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, true );
                         break;
 
                     default:

@@ -14,7 +14,7 @@ import com.strzal.hungry.screens.*;
 public enum ScreenEnum implements ScreenEnumInterface {
     GAME_SCREEN {
         public Screen getScreen(Object... params) {
-            return new GameScreen((HungrySpaceCats)params[0], (Integer) params[1]);
+            return new GameScreen((HungrySpaceCats)params[0], (Boolean) params[1]);
         }
     },
     TEXT_SCREEN {
