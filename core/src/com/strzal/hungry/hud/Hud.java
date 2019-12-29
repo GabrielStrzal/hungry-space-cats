@@ -17,6 +17,7 @@ import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.config.GameConfig;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
+import com.strzal.hungry.handler.LevelStats;
 import com.strzal.hungry.screenManager.ScreenEnum;
 import com.strzal.hungry.screenManager.ScreenManager;
 
@@ -72,6 +73,9 @@ public class Hud implements Disposable {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.getAudioHandler().playButtonSound();
+                game.getGameStatsHandler().saveLevelData(
+                        new LevelStats(1, game.getGameStats().getWave(),game.getGameStats().getCash(), false)
+                );
 
                 ScreenManager.getInstance().showScreen(
                         ScreenEnum.MENU_SCREEN, game
