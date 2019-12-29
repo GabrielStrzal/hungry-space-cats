@@ -28,16 +28,21 @@ public class GameTexts {
 
 
     public static final String GAME_OVER_TEXT =
-            "{FASTER} \n \n \n{COLOR=RED}" +
+            "{FASTER} \n \n{COLOR=RED}" +
                     "                                                                  " +
-                    "{SHAKE}GAME OVER {ENDSHAKE}";
+                    "{SHAKE}GAME OVER{ENDSHAKE} \n \n" +
+                    "                                      " +
+                    "{COLOR=WHITE}Always check your {COLOR=ORANGE}Oxygen {COLOR=WHITE}and your {COLOR=ORANGE}Energy" ;
 
 
 
     public static final String WAVE_COMPLETE_TEXT =
-            "{FASTER} \n \n \n" +
-                    "                                                                  " +
-                    "Week Complete! ";
+            "{FASTER} \n \n" +
+                    "                                                            " +
+                    "{COLOR=GREEN}Excellent work! \n \n" +
+                    "         " +
+                    "{COLOR=WHITE}This {COLOR=GREEN}week {COLOR=WHITE}is over, but it is not all done yet. " +
+                    "The number of cats has {COLOR=RED}increased" ;
 
     public static final String GAME_WON_TEXT =
             "{FASTER} \n \n \n" +
