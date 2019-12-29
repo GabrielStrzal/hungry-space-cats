@@ -29,6 +29,9 @@ public class ImagesPaths {
     public static final String COOKING_FISH_PLACE_02 = "images/buttons/cooking_fish_place_2.png";
     public static final String COOKING_FISH_PLACE_03 = "images/buttons/cooking_fish_place_3.png";
 
+    public static final String ENERGY_MAKER_PLACE_01 = "images/buttons/energy_maker_1.png";
+    public static final String ENERGY_MAKER_PLACE_02 = "images/buttons/energy_maker_2.png";
+    public static final String ENERGY_MAKER_PLACE_03 = "images/buttons/energy_maker_3.png";
 
     //Foods
     public static final String WATTER = "images/buttons/watter.png";

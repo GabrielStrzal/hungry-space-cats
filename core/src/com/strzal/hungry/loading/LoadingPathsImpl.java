@@ -39,6 +39,10 @@ public class LoadingPathsImpl implements LoadingPaths {
         list.add(ImagesPaths.COOKING_FISH_PLACE_02);
         list.add(ImagesPaths.COOKING_FISH_PLACE_03);
 
+        list.add(ImagesPaths.ENERGY_MAKER_PLACE_01);
+        list.add(ImagesPaths.ENERGY_MAKER_PLACE_02);
+        list.add(ImagesPaths.ENERGY_MAKER_PLACE_03);
+
         //Foods
         list.add(ImagesPaths.WATTER);
         list.add(ImagesPaths.WATTER_PRESSED);

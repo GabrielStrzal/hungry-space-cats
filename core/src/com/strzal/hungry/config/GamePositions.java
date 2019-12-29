@@ -18,6 +18,9 @@ public class GamePositions {
     public static final int COOKING_FISH_PLACE_X_POSITION = 580;
     public static final int COOKING_FISH_PLACE_Y_POSITION = 95;
 
+    public static final int ENERGY_MAKER_PLACE_X_POSITION = 745;
+    public static final int ENERGY_MAKER_PLACE_Y_POSITION = 110;
+
     public static final int WATER_X_POSITION = 125;
     public static final int WATER_Y_POSITION = 90;
     public static final int WATER_Y_SECOND_POSITION = WATER_Y_POSITION - 45;

@@ -99,6 +99,10 @@ public class GameController {
         energy -= usedEnergy;
     }
 
+    public void addEnergy(int usedEnergy) {
+        energy += usedEnergy;
+    }
+
     public boolean useWater() {
         if(isThereThisOrderInOrderList(OrderItemEnum.WATER)){
             water--;

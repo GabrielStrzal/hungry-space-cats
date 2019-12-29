@@ -28,6 +28,7 @@ public class GameScreen extends BasicMenuScreen {
     private CookingPlaceButton cookingPlaceButton;
     private FishMakerButton fishMakerButton;
     private CookingFishPlaceButton cookingFishPlaceButton;
+    private EnergyMakerPlaceButton energyMakerPlaceButton;
 
     private LevelOrderListLoaderController levelOrderListLoaderController;
 
@@ -66,6 +67,9 @@ public class GameScreen extends BasicMenuScreen {
         cookingFishPlaceButton = new CookingFishPlaceButton(game, gameController, stage,
                 GamePositions.COOKING_FISH_PLACE_X_POSITION, GamePositions.COOKING_FISH_PLACE_Y_POSITION);
 
+        energyMakerPlaceButton = new EnergyMakerPlaceButton(game, gameController, stage,
+                GamePositions.ENERGY_MAKER_PLACE_X_POSITION, GamePositions.ENERGY_MAKER_PLACE_Y_POSITION);
+
 
         InputMultiplexer inputMultiplexer = new InputMultiplexer();
         inputMultiplexer.addProcessor(stage);
@@ -85,6 +89,7 @@ public class GameScreen extends BasicMenuScreen {
         cookingPlaceButton.render();
         fishMakerButton.render();
         cookingFishPlaceButton.render();
+        energyMakerPlaceButton.render();
 
         update();
 
