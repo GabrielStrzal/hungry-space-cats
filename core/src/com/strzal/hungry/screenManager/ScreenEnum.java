@@ -31,6 +31,11 @@ public enum ScreenEnum implements ScreenEnumInterface {
         public Screen getScreen(Object... params) {
             return new MenuScreen((HungrySpaceCats)params[0]);
         }
+    },
+    TUTORIAL_SCREEN {
+        public Screen getScreen(Object... params) {
+            return new TutorialScreen((HungrySpaceCats)params[0]);
+        }
     };
 
 }

@@ -1,0 +1,55 @@
+package com.strzal.hungry.screens;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.strzal.hungry.BasicGame;
+import com.strzal.hungry.config.GameStats;
+import com.strzal.hungry.constants.ImagesPaths;
+import com.strzal.hungry.screenManager.ScreenEnum;
+import com.strzal.hungry.screenManager.ScreenManager;
+
+public class TutorialScreen extends BasicMenuScreen {
+
+
+    public TutorialScreen(BasicGame game) {
+        super(game);
+    }
+
+
+    @Override
+    public void show() {
+        Gdx.input.setInputProcessor(stage);
+
+        Table mainTable = new Table();
+        mainTable.setFillParent(true);
+        mainTable.bottom().padBottom(10);
+
+        TextButton nextButton = new TextButton("Menu", skin);
+
+        Image background = new Image((Texture) game.getAssetManager().get(ImagesPaths.GAME_TUTORIAL_BACKGROUND));
+
+        nextButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.getAudioHandler().playButtonSound();
+                game.setGameStats(new GameStats());
+                ScreenManager.getInstance().showScreen(
+                        ScreenEnum.MENU_SCREEN, game
+                );
+            }
+        });
+
+
+
+        mainTable.add(nextButton);
+
+        stage.addActor(background);
+        stage.addActor(mainTable);
+    }
+
+}

@@ -37,6 +37,7 @@ public class MenuScreen extends BasicMenuScreen {
         TextButton playButton = new TextButton("Play", skin);
         TextButton playEndlessButton = new TextButton("Play Endless Mode", skin);
         TextButton gameStatsButton = new TextButton("Game Stats", skin);
+        TextButton tutorialStatsButton = new TextButton("Instructions", skin);
 
         Image background = new Image((Texture) game.getAssetManager().get(ImagesPaths.MENU_BACKGROUND));
 
@@ -78,12 +79,24 @@ public class MenuScreen extends BasicMenuScreen {
             }
         });
 
+        tutorialStatsButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.getAudioHandler().playButtonSound();
+                ScreenManager.getInstance().showScreen(
+                        ScreenEnum.TUTORIAL_SCREEN, game
+                );
+            }
+        });
+
         //Add buttons to table
         mainTable.add(playButton);
         mainTable.row();
         mainTable.add(playEndlessButton);
         mainTable.row();
         mainTable.add(gameStatsButton);
+        mainTable.row();
+        mainTable.add(tutorialStatsButton);
 
         stage.addActor(background);
         //Add table to stage
