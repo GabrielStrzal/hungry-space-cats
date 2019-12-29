@@ -3,7 +3,6 @@ package com.strzal.hungry.controller;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.strzal.gdx.BasicGame;
 import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.config.GameSetting;
 import com.strzal.hungry.constants.ImagesPaths;
@@ -21,47 +20,24 @@ public class LevelOrderListLoaderController {
     Stage stage;
     AssetManager assetManager;
 
-    public LevelOrderListLoaderController(HungrySpaceCats game, Stage stage){
+    public LevelOrderListLoaderController(HungrySpaceCats game, Stage stage) {
         this.game = game;
         this.stage = stage;
         this.assetManager = game.getAssetManager();
     }
 
 
-    public ArrayList<HungryEntity> getLevelList(int levelNumber){
+    public ArrayList<HungryEntity> getLevelList() {
 
-        ArrayList<HungryEntity> hungryEntityArrayList = new ArrayList<>();
-
-        switch (levelNumber){
-
-            case 1:
-                ArrayList<OrderItemEnum> orderItemEnumList = new ArrayList<>();
-                orderItemEnumList.add(OrderItemEnum.WATER);
-                orderItemEnumList.add(OrderItemEnum.FISH_BOOL);
-
-                ArrayList<OrderItemEnum> orderItemEnumList2 = new ArrayList<>();
-                orderItemEnumList2.add(OrderItemEnum.CHIPS_BOOL);
-                orderItemEnumList2.add(OrderItemEnum.WATER);
-
-                HungryEntity hungryEntity = new HungryEntity(game, stage, (Texture) assetManager.get(ImagesPaths.HUNGRY_CAT), orderItemEnumList);
-                HungryEntity hungryEntity2 = new HungryEntity(game, stage, (Texture) assetManager.get(ImagesPaths.HUNGRY_CAT), orderItemEnumList2);
-                hungryEntityArrayList.add(hungryEntity);
-                hungryEntityArrayList.add(hungryEntity2);
-            case 2:
-
-                hungryEntityArrayList = getRandomOrderSize(GameSetting.NUMBER_OF_HUNGRY_IN_WAVE + game.getGameStats().getWave());
-
-
-        }
-        return hungryEntityArrayList;
+        return getRandomOrderSize(GameSetting.NUMBER_OF_HUNGRY_IN_WAVE + game.getGameStats().getWave());
 
     }
 
-    public ArrayList<HungryEntity> getRandomOrderSize(int levelSize){
+    public ArrayList<HungryEntity> getRandomOrderSize(int levelSize) {
 
         ArrayList<HungryEntity> hungryEntityArrayList = new ArrayList<>();
 
-        for (int i = 1; i <= levelSize; i++){
+        for (int i = 1; i <= levelSize; i++) {
             ArrayList<OrderItemEnum> orderItemEnumListRandom = new ArrayList<>();
             orderItemEnumListRandom.add(getRandomOrder());
             orderItemEnumListRandom.add(getRandomOrder());
@@ -71,14 +47,14 @@ public class LevelOrderListLoaderController {
     }
 
 
-    private OrderItemEnum getRandomOrder(){
+    private OrderItemEnum getRandomOrder() {
 
         List<OrderItemEnum> givenList = Arrays.asList(OrderItemEnum.WATER, OrderItemEnum.CHIPS_BOOL, OrderItemEnum.FISH_BOOL);
         Random rand = new Random();
         return givenList.get(rand.nextInt(givenList.size()));
     }
 
-    private String getRandomHungry(){
+    private String getRandomHungry() {
 
         List<String> givenList = Arrays.asList(ImagesPaths.HUNGRY_CAT, ImagesPaths.HUNGRY_CAT_2, ImagesPaths.HUNGRY_CAT_3);
         Random rand = new Random();

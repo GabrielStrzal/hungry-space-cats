@@ -7,12 +7,10 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.controller.GameController;
 import com.strzal.hungry.entity.BasicButton;
-import lombok.Getter;
 
 public class FoodEntity extends BasicButton {
 
     protected ImageButton imageButton;
-    @Getter
     protected int arrayPosition;
 
     protected Texture texture;
@@ -32,5 +30,10 @@ public class FoodEntity extends BasicButton {
     }
 
     protected void loadTextures() {
+    }
+
+
+    public int getArrayPosition() {
+        return arrayPosition;
     }
 }

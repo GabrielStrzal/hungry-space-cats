@@ -3,7 +3,7 @@ package com.strzal.hungry.audio;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-import com.strzal.gdx.BasicGame;
+import com.strzal.hungry.BasicGame;
 import com.strzal.hungry.constants.SoundPaths;
 
 public class AudioHandler {
@@ -13,6 +13,9 @@ public class AudioHandler {
     private AssetManager assetManager;
     long gameSoundID;
     float volume = 1;// 0.3f;
+
+    Sound alarmSound;
+    Boolean loaded = false;
 
     public AudioHandler(BasicGame game){
         game = game;
@@ -49,4 +52,25 @@ public class AudioHandler {
 //        if(game.getGameStatsHandler().isAudioOn())
         sound.play(volume * 3);
     }
+
+    public void playAlarmSound()  {
+        loadAlarmSound();
+        alarmSound.resume();
+    }
+
+    public void stopAlarmSound(){
+        loadAlarmSound();
+        alarmSound.pause();
+    }
+
+    private void loadAlarmSound(){
+        if(!loaded) {
+            alarmSound = assetManager.get(SoundPaths.ALARM_AUDIO);
+            alarmSound.loop(volume);
+            alarmSound.pause();
+            loaded = true;
+        }
+    }
+
+
 }

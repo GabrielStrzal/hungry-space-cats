@@ -8,12 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.rafaskoberg.gdx.typinglabel.TypingLabel;
-import com.strzal.gdx.BasicGame;
-import com.strzal.gdx.screenManager.ScreenManager;
+import com.strzal.hungry.BasicGame;
 import com.strzal.hungry.config.GameSetting;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.handler.LevelStats;
 import com.strzal.hungry.screenManager.ScreenEnum;
+import com.strzal.hungry.screenManager.ScreenManager;
 
 
 public class TextScreen extends BasicMenuScreen {
@@ -55,13 +55,16 @@ public class TextScreen extends BasicMenuScreen {
                 // game > level completed (next level, but this should not be here)
                 switch(gameMode){
                     case STORY_MODE:
-                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, 2 );
+                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, false );
                         break;
                     case ENDLESS_MODE:
-                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, 2 );
+                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, true );
                         break;
                     case LEVEL_COMPLETED:
-                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, 2 );
+                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, false );
+                        break;
+                    case LEVEL_COMPLETED_ENDLESS:
+                        ScreenManager.getInstance().showScreen( ScreenEnum.GAME_SCREEN, game, true );
                         break;
 
                     default:

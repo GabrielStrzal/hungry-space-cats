@@ -2,14 +2,9 @@ package com.strzal.hungry.screenManager;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.ScreenAdapter;
-import com.strzal.gdx.loading.LoadingPaths;
-import com.strzal.gdx.screenManager.ScreenEnumInterface;
-import com.strzal.gdx.screens.LoadingScreen;
 import com.strzal.hungry.HungrySpaceCats;
-import com.strzal.hungry.screens.GameModeEnum;
-import com.strzal.hungry.screens.GameScreen;
-import com.strzal.hungry.screens.MenuScreen;
-import com.strzal.hungry.screens.TextScreen;
+import com.strzal.hungry.loading.LoadingPaths;
+import com.strzal.hungry.screens.*;
 
 
 /**
@@ -19,7 +14,7 @@ import com.strzal.hungry.screens.TextScreen;
 public enum ScreenEnum implements ScreenEnumInterface {
     GAME_SCREEN {
         public Screen getScreen(Object... params) {
-            return new GameScreen((HungrySpaceCats)params[0], (Integer) params[1]);
+            return new GameScreen((HungrySpaceCats)params[0], (Boolean) params[1]);
         }
     },
     TEXT_SCREEN {
@@ -35,6 +30,11 @@ public enum ScreenEnum implements ScreenEnumInterface {
     MENU_SCREEN {
         public Screen getScreen(Object... params) {
             return new MenuScreen((HungrySpaceCats)params[0]);
+        }
+    },
+    TUTORIAL_SCREEN {
+        public Screen getScreen(Object... params) {
+            return new TutorialScreen((HungrySpaceCats)params[0]);
         }
     };
 

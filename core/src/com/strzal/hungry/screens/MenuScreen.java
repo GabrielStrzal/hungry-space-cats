@@ -8,12 +8,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.strzal.gdx.BasicGame;
-import com.strzal.gdx.screenManager.ScreenManager;
+import com.strzal.hungry.BasicGame;
 import com.strzal.hungry.config.GameStats;
 import com.strzal.hungry.config.GameTexts;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.screenManager.ScreenEnum;
+import com.strzal.hungry.screenManager.ScreenManager;
 
 public class MenuScreen extends BasicMenuScreen {
 
@@ -37,6 +37,7 @@ public class MenuScreen extends BasicMenuScreen {
         TextButton playButton = new TextButton("Play", skin);
         TextButton playEndlessButton = new TextButton("Play Endless Mode", skin);
         TextButton gameStatsButton = new TextButton("Game Stats", skin);
+        TextButton tutorialStatsButton = new TextButton("Instructions", skin);
 
         Image background = new Image((Texture) game.getAssetManager().get(ImagesPaths.MENU_BACKGROUND));
 
@@ -78,12 +79,24 @@ public class MenuScreen extends BasicMenuScreen {
             }
         });
 
+        tutorialStatsButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                game.getAudioHandler().playButtonSound();
+                ScreenManager.getInstance().showScreen(
+                        ScreenEnum.TUTORIAL_SCREEN, game
+                );
+            }
+        });
+
         //Add buttons to table
         mainTable.add(playButton);
         mainTable.row();
         mainTable.add(playEndlessButton);
         mainTable.row();
         mainTable.add(gameStatsButton);
+        mainTable.row();
+        mainTable.add(tutorialStatsButton);
 
         stage.addActor(background);
         //Add table to stage

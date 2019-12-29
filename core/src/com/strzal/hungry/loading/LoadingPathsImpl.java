@@ -1,6 +1,5 @@
 package com.strzal.hungry.loading;
 
-import com.strzal.gdx.loading.LoadingPaths;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.constants.SoundPaths;
 
@@ -16,6 +15,7 @@ public class LoadingPathsImpl implements LoadingPaths {
         list.add(ImagesPaths.MENU_BACKGROUND);
         list.add(ImagesPaths.GAME_BACKGROUND);
         list.add(ImagesPaths.GAME_TEXT_BACKGROUND);
+        list.add(ImagesPaths.GAME_TUTORIAL_BACKGROUND);
 
         //Buttons
         list.add(ImagesPaths.TRANSPARENT);
@@ -114,6 +114,7 @@ public class LoadingPathsImpl implements LoadingPaths {
         list.add(SoundPaths.MENU_BUTTON_AUDIO);
         list.add(SoundPaths.KITTEN_MEOW_AUDIO);
         list.add(SoundPaths.ORDER_COMPLETE_AUDIO);
+        list.add(SoundPaths.ALARM_AUDIO);
 
         return list;
     }

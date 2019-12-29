@@ -13,18 +13,17 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.strzal.gdx.screenManager.ScreenManager;
 import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.config.GameConfig;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
+import com.strzal.hungry.handler.LevelStats;
 import com.strzal.hungry.screenManager.ScreenEnum;
-import lombok.Getter;
+import com.strzal.hungry.screenManager.ScreenManager;
 
 public class Hud implements Disposable {
 
     private AssetManager assetManager;
-    @Getter
     private Stage stage;
     private HungrySpaceCats game;
     private GameController gameController;
@@ -39,23 +38,27 @@ public class Hud implements Disposable {
     //Labels
     Label cashLabel;
     Label waveLabel;
+    Label numberOfCatsInLineLabel;
 
     //Constants
     private static float LABELS_Y_POSITION = GameConfig.SCREEN_HEIGHT - 40;
     private static float CASH_LABEL_X_POSITION = 30;
     private static float WAVE_LABEL_X_POSITION = 195;
+    private static float CATS_LEFT_LABEL_X_POSITION = 300;
     private static float OXYGEN_LABEL_X_POSITION = 340;
     private static float ENERGY_LABEL_X_POSITION = 545;
+    private static float ENDLESS_LABEL_X_POSITION = 20;
 
     private static float MENU_LABEL_X_POSITION = 740;
 
 
-    public Hud(HungrySpaceCats game, GameController gameController){
+    public Hud(HungrySpaceCats game, GameController gameController) {
         this.game = game;
         this.gameController = gameController;
         stage = new Stage(new FitViewport(GameConfig.SCREEN_WIDTH, GameConfig.SCREEN_HEIGHT));
         assetManager = game.getAssetManager();
         shapeRenderer = new ShapeRenderer();
+        shapeRenderer.setProjectionMatrix(stage.getViewport().getCamera().combined);
 
         atlas = new TextureAtlas(ImagesPaths.UI_SKIN_ATLAS);
         skin = new Skin(Gdx.files.internal(ImagesPaths.UI_SKIN_JSON), atlas);
@@ -66,6 +69,8 @@ public class Hud implements Disposable {
         addOxygenText();
         addEnergyText();
         addGoToMenuButton();
+        addEndlessText();
+        addNumberOfCatsLeftText();
     }
 
     private void addGoToMenuButton() {
@@ -74,6 +79,9 @@ public class Hud implements Disposable {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 game.getAudioHandler().playButtonSound();
+                game.getGameStatsHandler().saveLevelData(
+                        new LevelStats(1, game.getGameStats().getWave(), game.getGameStats().getCash(), false)
+                );
 
                 ScreenManager.getInstance().showScreen(
                         ScreenEnum.MENU_SCREEN, game
@@ -108,19 +116,44 @@ public class Hud implements Disposable {
         stage.addActor(textLabel);
     }
 
-    public void resize(int width, int height){
+    private void addEndlessText() {
+        if (gameController.isEndless()) {
+            Label textLabel = new Label("ENDLESS", skin);
+            textLabel.setColor(Color.RED);
+            textLabel.setPosition(ENDLESS_LABEL_X_POSITION, LABELS_Y_POSITION - 30);
+            stage.addActor(textLabel);
+        }
+    }
+
+    private void addNumberOfCatsLeftText() {
+        numberOfCatsInLineLabel = new Label("Number of cats in line: " + gameController.getHungryEntityList().size(), skin);
+        numberOfCatsInLineLabel.setPosition(CATS_LEFT_LABEL_X_POSITION, LABELS_Y_POSITION - 30);
+        stage.addActor(numberOfCatsInLineLabel);
+    }
+
+    public void resize(int width, int height) {
         stage.getViewport().update(width, height);
     }
 
-    public void draw(){
+    public void draw() {
         stage.act(Gdx.graphics.getDeltaTime());
         cashLabel.setText("Cash: " + gameController.getGameStats().getCash());
         waveLabel.setText("Week: " + gameController.getGameStats().getWave());
+        numberOfCatsInLineLabel.setText("Number of cats in line: " + gameController.getHungryEntityList().size());
         stage.draw();
 
         drawEnergyBar();
         drawOxygenBar();
+        updateAlarmSound();
 
+    }
+
+    private void updateAlarmSound() {
+        if (gameController.getOxygen() < 20 || gameController.getEnergy() < 20 && !gameController.isGameOver()) {
+            game.getAudioHandler().playAlarmSound();
+        } else {
+            game.getAudioHandler().stopAlarmSound();
+        }
     }
 
     private void drawOxygenBar() {
@@ -130,9 +163,9 @@ public class Hud implements Disposable {
         shapeRenderer.rect(
                 OXYGEN_LABEL_X_POSITION + 70,
                 LABELS_Y_POSITION + 6,
-                100 ,15);
+                100, 15);
 
-        if(gameController.getOxygen() < 20){
+        if (gameController.getOxygen() < 20) {
             shapeRenderer.setColor(Color.RED);
         } else {
             shapeRenderer.setColor(Color.SALMON);
@@ -140,7 +173,7 @@ public class Hud implements Disposable {
         shapeRenderer.rect(
                 OXYGEN_LABEL_X_POSITION + 70,
                 LABELS_Y_POSITION + 6,
-                gameController.getOxygen(),15);
+                gameController.getOxygen(), 15);
         shapeRenderer.end();
     }
 
@@ -152,9 +185,9 @@ public class Hud implements Disposable {
         shapeRenderer.rect(
                 ENERGY_LABEL_X_POSITION + 70,
                 LABELS_Y_POSITION + 6,
-                100,15);
+                100, 15);
 
-        if(gameController.getEnergy() < 20){
+        if (gameController.getEnergy() < 20) {
             shapeRenderer.setColor(Color.RED);
         } else {
             shapeRenderer.setColor(Color.SALMON);
@@ -162,7 +195,7 @@ public class Hud implements Disposable {
         shapeRenderer.rect(
                 ENERGY_LABEL_X_POSITION + 70,
                 LABELS_Y_POSITION + 6,
-                gameController.getEnergy(),15);
+                gameController.getEnergy(), 15);
         shapeRenderer.end();
     }
 
@@ -170,5 +203,9 @@ public class Hud implements Disposable {
     @Override
     public void dispose() {
         shapeRenderer.dispose();
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 }

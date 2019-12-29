@@ -10,11 +10,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import com.strzal.gdx.BasicGame;
-import com.strzal.gdx.utils.GdxUtils;
+import com.strzal.hungry.BasicGame;
 import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.config.GameConfig;
 import com.strzal.hungry.constants.ImagesPaths;
+import com.strzal.hungry.utils.GdxUtils;
 
 public class BasicMenuScreen extends ScreenAdapter {
 

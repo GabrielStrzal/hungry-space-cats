@@ -1,8 +1,6 @@
 package com.strzal.hungry.config;
 
-import lombok.Getter;
 
-@Getter
 public class GameStats {
     private int wave = 1;
     private int cash;
@@ -23,5 +21,13 @@ public class GameStats {
             cash -= useCash;
             return true;
         }
+    }
+
+    public int getWave() {
+        return wave;
+    }
+
+    public int getCash() {
+        return cash;
     }
 }

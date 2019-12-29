@@ -7,6 +7,7 @@ public class SoundPaths {
     public static final String MENU_BUTTON_AUDIO = "audio/button_press.wav";
     public static final String KITTEN_MEOW_AUDIO = "audio/Kitten Meow.wav";
     public static final String ORDER_COMPLETE_AUDIO = "audio/order_complete.wav";
+    public static final String ALARM_AUDIO = "audio/Alien_AlarmDrum.wav";
 
     private SoundPaths() {}
 }
