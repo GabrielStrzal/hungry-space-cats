@@ -26,6 +26,8 @@ public class GameController {
     @Setter
     private long oxygen;
 
+    private long oxygenForMeter;
+
     private int water = 0;
     private List<WaterEntity> waterEntityList;
 
@@ -75,6 +77,8 @@ public class GameController {
         fishBoolEntityList = new ArrayList<>();
 
         this.hungryEntityList = hungryEntityList;
+
+        oxygenForMeter = GameSetting.OXYGEN_INITIAL_TIME;
     }
 
 
@@ -99,8 +103,14 @@ public class GameController {
         energy -= usedEnergy;
     }
 
-    public void addEnergy(int usedEnergy) {
-        energy += usedEnergy;
+    public void addEnergy(int energyToAdd) {
+        energy += energyToAdd;
+        if(energy > 100){
+            energy = 100;
+        }
+    }
+    public void addOxygen(int oxygenToAdd) {
+        oxygenForMeter += oxygenToAdd;
     }
 
     public boolean useWater() {

@@ -91,7 +91,7 @@ public class Hud implements Disposable {
     }
 
     private void addWaveText() {
-        waveLabel = new Label("Wave: " + gameController.getGameStats().getWave(), skin);
+        waveLabel = new Label("Week: " + gameController.getGameStats().getWave(), skin);
         waveLabel.setPosition(WAVE_LABEL_X_POSITION, LABELS_Y_POSITION);
         stage.addActor(waveLabel);
     }
@@ -115,7 +115,7 @@ public class Hud implements Disposable {
     public void draw(){
         stage.act(Gdx.graphics.getDeltaTime());
         cashLabel.setText("Cash: " + gameController.getGameStats().getCash());
-        waveLabel.setText("Wave: " + gameController.getGameStats().getWave());
+        waveLabel.setText("Week: " + gameController.getGameStats().getWave());
         stage.draw();
 
         drawEnergyBar();

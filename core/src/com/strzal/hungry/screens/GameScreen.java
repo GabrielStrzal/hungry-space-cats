@@ -29,12 +29,13 @@ public class GameScreen extends BasicMenuScreen {
     private FishMakerButton fishMakerButton;
     private CookingFishPlaceButton cookingFishPlaceButton;
     private EnergyMakerPlaceButton energyMakerPlaceButton;
+    private OxygenMakerPlaceButton oxygenMakerPlaceButton;
 
     private LevelOrderListLoaderController levelOrderListLoaderController;
 
     public GameScreen(BasicGame game, int level) {
         super(game);
-        levelOrderListLoaderController = new LevelOrderListLoaderController(game, stage);
+        levelOrderListLoaderController = new LevelOrderListLoaderController(this.game, stage);
         gameController = new GameController(levelOrderListLoaderController.getLevelList(level), this,
                 this.game.getGameStats(), this.game.getAudioHandler());
         timeController = new TimeController();
@@ -70,6 +71,9 @@ public class GameScreen extends BasicMenuScreen {
         energyMakerPlaceButton = new EnergyMakerPlaceButton(game, gameController, stage,
                 GamePositions.ENERGY_MAKER_PLACE_X_POSITION, GamePositions.ENERGY_MAKER_PLACE_Y_POSITION);
 
+        oxygenMakerPlaceButton = new OxygenMakerPlaceButton(game, gameController, stage,
+                GamePositions.OXYGEN_MAKER_PLACE_X_POSITION, GamePositions.OXYGEN_MAKER_PLACE_Y_POSITION);
+
 
         InputMultiplexer inputMultiplexer = new InputMultiplexer();
         inputMultiplexer.addProcessor(stage);
@@ -90,6 +94,7 @@ public class GameScreen extends BasicMenuScreen {
         fishMakerButton.render();
         cookingFishPlaceButton.render();
         energyMakerPlaceButton.render();
+        oxygenMakerPlaceButton.render();
 
         update();
 
@@ -251,7 +256,12 @@ public class GameScreen extends BasicMenuScreen {
 
 
     private void updateOxygen() {
-        gameController.setOxygen(GameSetting.OXYGEN_INITIAL_TIME - timeController.getTimePassedInSeconds());
+
+        long oxygen = gameController.getOxygenForMeter() - timeController.getTimePassedInSeconds();
+        if(oxygen > 100){
+            oxygen = 100;
+        }
+        gameController.setOxygen(oxygen);
     }
 
     @Override

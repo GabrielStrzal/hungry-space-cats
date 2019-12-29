@@ -33,6 +33,10 @@ public class ImagesPaths {
     public static final String ENERGY_MAKER_PLACE_02 = "images/buttons/energy_maker_2.png";
     public static final String ENERGY_MAKER_PLACE_03 = "images/buttons/energy_maker_3.png";
 
+    public static final String OXYGEN_MAKER_PLACE_01 = "images/buttons/oxygen_maker_1.png";
+    public static final String OXYGEN_MAKER_PLACE_02 = "images/buttons/oxygen_maker_2.png";
+    public static final String OXYGEN_MAKER_PLACE_03 = "images/buttons/oxygen_maker_3.png";
+
     //Foods
     public static final String WATTER = "images/buttons/watter.png";
     public static final String WATTER_PRESSED = "images/buttons/watter_pressed.png";

@@ -4,6 +4,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.strzal.gdx.BasicGame;
+import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.config.GameSetting;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.entity.HungryEntity;
@@ -16,11 +17,11 @@ import java.util.Random;
 
 public class LevelOrderListLoaderController {
 
-    BasicGame game;
+    HungrySpaceCats game;
     Stage stage;
     AssetManager assetManager;
 
-    public LevelOrderListLoaderController(BasicGame game, Stage stage){
+    public LevelOrderListLoaderController(HungrySpaceCats game, Stage stage){
         this.game = game;
         this.stage = stage;
         this.assetManager = game.getAssetManager();
@@ -48,7 +49,7 @@ public class LevelOrderListLoaderController {
                 hungryEntityArrayList.add(hungryEntity2);
             case 2:
 
-                hungryEntityArrayList = getRandomOrderSize(GameSetting.NUMBER_OF_HUNGRY_IN_WAVE);
+                hungryEntityArrayList = getRandomOrderSize(GameSetting.NUMBER_OF_HUNGRY_IN_WAVE + game.getGameStats().getWave());
 
 
         }

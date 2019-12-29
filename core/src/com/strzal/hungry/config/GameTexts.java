@@ -34,7 +34,7 @@ public class GameTexts {
 
     public static final String WAVE_COMPLETE_TEXT =
             "{FASTER} \n \n \n                                " +
-                    "                                  Wave Complete! ";
+                    "                                  Week Complete! ";
 
     public static final String GAME_WON_TEXT =
             "{FASTER} \n \n \n  {RAINBOW}                              " +
