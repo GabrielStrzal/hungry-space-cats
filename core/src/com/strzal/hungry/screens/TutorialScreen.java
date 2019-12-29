@@ -7,8 +7,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.rafaskoberg.gdx.typinglabel.TypingLabel;
 import com.strzal.hungry.BasicGame;
 import com.strzal.hungry.config.GameStats;
+import com.strzal.hungry.config.GameTexts;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.screenManager.ScreenEnum;
 import com.strzal.hungry.screenManager.ScreenManager;
@@ -49,6 +51,33 @@ public class TutorialScreen extends BasicMenuScreen {
         mainTable.add(nextButton);
 
         stage.addActor(background);
+        stage.addActor(mainTable);
+        initText();
+    }
+
+    private void initText(){
+        //labels and text
+        TypingLabel label;
+
+        //Create Table
+        Table mainTable = new Table();
+        //Set table to fill stage
+        mainTable.setFillParent(true);
+        //Set alignment of contents in the table.
+        mainTable.left().bottom();
+        mainTable.padLeft(340);
+        mainTable.padBottom(160);
+
+        // Create a TypingLabel instance with your custom text
+        label = new TypingLabel(GameTexts.TUTORIAL_TEXT, skin);
+
+
+        //Add buttons to table
+        mainTable.add(label);
+        mainTable.row();
+
+
+        //Add table to stage
         stage.addActor(mainTable);
     }
 

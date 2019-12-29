@@ -62,5 +62,11 @@ public class GameTexts {
                     "                                           " +
                     "{COLOR=WHITE}Top Cash:    {COLOR=GREEN} {VAR=cash} \n";
 
+    public static final String TUTORIAL_TEXT =
+            "{FASTER}{COLOR=GREEN}" +
+                    "Careful!  \n" +
+                    "{COLOR=WHITE}Most things consume {COLOR=GREEN}ENERGY{COLOR=WHITE} \n" +
+                    "but Oxygen and Energy generators consume {COLOR=GREEN}CASH";
+
     private GameTexts(){}
 }
