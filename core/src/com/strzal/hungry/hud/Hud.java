@@ -38,11 +38,13 @@ public class Hud implements Disposable {
     //Labels
     Label cashLabel;
     Label waveLabel;
+    Label numberOfCatsInLineLabel;
 
     //Constants
     private static float LABELS_Y_POSITION = GameConfig.SCREEN_HEIGHT - 40;
     private static float CASH_LABEL_X_POSITION = 30;
     private static float WAVE_LABEL_X_POSITION = 195;
+    private static float CATS_LEFT_LABEL_X_POSITION = 300;
     private static float OXYGEN_LABEL_X_POSITION = 340;
     private static float ENERGY_LABEL_X_POSITION = 545;
     private static float ENDLESS_LABEL_X_POSITION = 20;
@@ -56,6 +58,7 @@ public class Hud implements Disposable {
         stage = new Stage(new FitViewport(GameConfig.SCREEN_WIDTH, GameConfig.SCREEN_HEIGHT));
         assetManager = game.getAssetManager();
         shapeRenderer = new ShapeRenderer();
+        shapeRenderer.setProjectionMatrix(stage.getViewport().getCamera().combined);
 
         atlas = new TextureAtlas(ImagesPaths.UI_SKIN_ATLAS);
         skin = new Skin(Gdx.files.internal(ImagesPaths.UI_SKIN_JSON), atlas);
@@ -67,6 +70,7 @@ public class Hud implements Disposable {
         addEnergyText();
         addGoToMenuButton();
         addEndlessText();
+        addNumberOfCatsLeftText();
     }
 
     private void addGoToMenuButton() {
@@ -121,6 +125,12 @@ public class Hud implements Disposable {
         }
     }
 
+    private void addNumberOfCatsLeftText() {
+        numberOfCatsInLineLabel = new Label("Number of cats in line: " + gameController.getHungryEntityList().size(), skin);
+        numberOfCatsInLineLabel.setPosition(CATS_LEFT_LABEL_X_POSITION, LABELS_Y_POSITION - 30);
+        stage.addActor(numberOfCatsInLineLabel);
+    }
+
     public void resize(int width, int height) {
         stage.getViewport().update(width, height);
     }
@@ -129,6 +139,7 @@ public class Hud implements Disposable {
         stage.act(Gdx.graphics.getDeltaTime());
         cashLabel.setText("Cash: " + gameController.getGameStats().getCash());
         waveLabel.setText("Week: " + gameController.getGameStats().getWave());
+        numberOfCatsInLineLabel.setText("Number of cats in line: " + gameController.getHungryEntityList().size());
         stage.draw();
 
         drawEnergyBar();
