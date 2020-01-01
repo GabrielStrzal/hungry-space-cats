@@ -4,7 +4,7 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.strzal.hungry.BasicGame;
+import com.strzal.gdxUtilLib.BasicGame;
 import com.strzal.hungry.config.GamePositions;
 
 import java.util.ArrayList;

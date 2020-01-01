@@ -1,13 +1,14 @@
 package com.strzal.hungry;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.strzal.gdxUtilLib.BasicGame;
+import com.strzal.gdxUtilLib.screenManager.ScreenManager;
 import com.strzal.hungry.audio.AudioHandler;
 import com.strzal.hungry.config.GameConfig;
 import com.strzal.hungry.config.GameStats;
 import com.strzal.hungry.handler.GameStatsHandler;
 import com.strzal.hungry.loading.LoadingPathsImpl;
 import com.strzal.hungry.screenManager.ScreenEnum;
-import com.strzal.hungry.screenManager.ScreenManager;
 import com.strzal.hungry.screens.MenuScreen;
 
 public class HungrySpaceCats extends BasicGame {

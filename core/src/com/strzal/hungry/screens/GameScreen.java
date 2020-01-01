@@ -4,7 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.strzal.hungry.BasicGame;
+import com.strzal.gdxUtilLib.BasicGame;
+import com.strzal.gdxUtilLib.screenManager.ScreenManager;
 import com.strzal.hungry.config.GamePositions;
 import com.strzal.hungry.config.GameSetting;
 import com.strzal.hungry.config.GameTexts;
@@ -17,7 +18,6 @@ import com.strzal.hungry.entity.makers.*;
 import com.strzal.hungry.handler.LevelStats;
 import com.strzal.hungry.hud.Hud;
 import com.strzal.hungry.screenManager.ScreenEnum;
-import com.strzal.hungry.screenManager.ScreenManager;
 
 public class GameScreen extends BasicMenuScreen {
 

@@ -2,8 +2,10 @@ package com.strzal.hungry.screenManager;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.ScreenAdapter;
+import com.strzal.gdxUtilLib.loading.LoadingPaths;
+import com.strzal.gdxUtilLib.screenManager.ScreenEnumInterface;
+import com.strzal.gdxUtilLib.screens.LoadingScreen;
 import com.strzal.hungry.HungrySpaceCats;
-import com.strzal.hungry.loading.LoadingPaths;
 import com.strzal.hungry.screens.*;
 
 

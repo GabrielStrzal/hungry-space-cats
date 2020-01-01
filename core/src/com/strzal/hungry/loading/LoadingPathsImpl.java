@@ -1,5 +1,6 @@
 package com.strzal.hungry.loading;
 
+import com.strzal.gdxUtilLib.loading.LoadingPaths;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.constants.SoundPaths;
 

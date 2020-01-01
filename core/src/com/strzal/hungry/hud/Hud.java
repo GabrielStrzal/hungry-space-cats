@@ -13,13 +13,13 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.strzal.gdxUtilLib.screenManager.ScreenManager;
 import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.config.GameConfig;
 import com.strzal.hungry.constants.ImagesPaths;
 import com.strzal.hungry.controller.GameController;
 import com.strzal.hungry.handler.LevelStats;
 import com.strzal.hungry.screenManager.ScreenEnum;
-import com.strzal.hungry.screenManager.ScreenManager;
 
 public class Hud implements Disposable {
 
