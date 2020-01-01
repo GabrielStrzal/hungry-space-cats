@@ -51,5 +51,9 @@ public class GamePositions {
     public static final int HUNGRY_MEAL_Y_POSITION = 305;
     public static final int HUNGRY_MEAL_POSITION_TAB = 75;
 
+
+    public static final int GAME_VERSION_X_POSITION = 10;
+    public static final int GAME_VERSION_Y_POSITION = 10;
+
     private GamePositions(){}
 }

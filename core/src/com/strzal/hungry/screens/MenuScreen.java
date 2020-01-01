@@ -5,10 +5,13 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.strzal.hungry.BasicGame;
+import com.strzal.hungry.config.GameConfig;
+import com.strzal.hungry.config.GamePositions;
 import com.strzal.hungry.config.GameStats;
 import com.strzal.hungry.config.GameTexts;
 import com.strzal.hungry.constants.ImagesPaths;
@@ -101,6 +104,12 @@ public class MenuScreen extends BasicMenuScreen {
         stage.addActor(background);
         //Add table to stage
         stage.addActor(mainTable);
+        addVersionText();
     }
 
+    private void addVersionText() {
+        Label textLabel = new Label(GameConfig.GAME_VERSION, skin);
+        textLabel.setPosition(GamePositions.GAME_VERSION_X_POSITION, GamePositions.GAME_VERSION_Y_POSITION);
+        stage.addActor(textLabel);
+    }
 }
