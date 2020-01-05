@@ -51,6 +51,8 @@ public class EnergyMakerPlaceButton extends BasicMakerButton {
 
                 imageButton.setTouchable(Touchable.enabled);
                 imageButton.setChecked(false);
+            } else {
+                drawProgressBar(30, 8, 10, 3);
             }
         }
         // always set disabled if cannot click

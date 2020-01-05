@@ -47,6 +47,8 @@ public class WaterPumpButton extends BasicMakerButton {
                 gameController.addWatter();
                 imageButton.setTouchable(Touchable.enabled);
                 imageButton.setChecked(false);
+            } else {
+                drawProgressBar();
             }
         }
         // always set disabled if cannot click

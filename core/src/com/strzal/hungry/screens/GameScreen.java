@@ -296,9 +296,4 @@ public class GameScreen extends BasicMenuScreen {
         hud.resize(width, height);
     }
 
-    @Override
-    public void dispose() {
-        super.dispose();
-        hud.dispose();
-    }
 }

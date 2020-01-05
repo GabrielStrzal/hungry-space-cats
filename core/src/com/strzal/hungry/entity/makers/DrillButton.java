@@ -48,6 +48,8 @@ public class DrillButton extends BasicMakerButton {
                 gameController.addChip();
                 imageButton.setTouchable(Touchable.enabled);
                 imageButton.setChecked(false);
+            } else {
+                drawProgressBar();
             }
         }
         // always set disabled if cannot click

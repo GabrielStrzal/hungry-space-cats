@@ -21,7 +21,7 @@ import com.strzal.hungry.controller.GameController;
 import com.strzal.hungry.handler.LevelStats;
 import com.strzal.hungry.screenManager.ScreenEnum;
 
-public class Hud implements Disposable {
+public class Hud {
 
     private AssetManager assetManager;
     private Stage stage;
@@ -57,7 +57,7 @@ public class Hud implements Disposable {
         this.gameController = gameController;
         stage = new Stage(new FitViewport(GameConfig.SCREEN_WIDTH, GameConfig.SCREEN_HEIGHT));
         assetManager = game.getAssetManager();
-        shapeRenderer = new ShapeRenderer();
+        shapeRenderer = game.getShapeRenderer();
         shapeRenderer.setProjectionMatrix(stage.getViewport().getCamera().combined);
 
         atlas = new TextureAtlas(ImagesPaths.UI_SKIN_ATLAS);
@@ -199,11 +199,6 @@ public class Hud implements Disposable {
         shapeRenderer.end();
     }
 
-
-    @Override
-    public void dispose() {
-        shapeRenderer.dispose();
-    }
 
     public Stage getStage() {
         return stage;

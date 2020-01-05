@@ -20,8 +20,6 @@ public class BasicMakerButton extends BasicButton {
     protected Texture textureDown;
     protected Texture textureChecked;
 
-    protected ImageButton imageButton;
-
 
     public BasicMakerButton(final HungrySpaceCats game, final GameController gameController, Stage stage, int xPosition, int yPosition) {
         super(game, gameController, stage, xPosition, yPosition);

@@ -51,6 +51,8 @@ public class FishMakerButton extends BasicMakerButton {
                 gameController.addFish();
                 imageButton.setTouchable(Touchable.enabled);
                 imageButton.setChecked(false);
+            } else {
+                drawProgressBar(50, 8, 0, -3);
             }
         }
         // always set disabled if cannot click

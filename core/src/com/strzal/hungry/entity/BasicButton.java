@@ -1,7 +1,10 @@
 package com.strzal.hungry.entity;
 
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.strzal.hungry.HungrySpaceCats;
 import com.strzal.hungry.controller.GameController;
@@ -13,8 +16,13 @@ public class BasicButton {
     protected Stage stage;
     protected AssetManager assetManager;
 
+    //Rectangles
+    private ShapeRenderer shapeRenderer;
+
     protected int xPosition;
     protected int yPosition;
+
+    protected ImageButton imageButton;
 
     //timer
     protected long initialClickTime;
@@ -28,6 +36,7 @@ public class BasicButton {
 
         this.xPosition = xPosition;
         this.yPosition = yPosition;
+        shapeRenderer = game.getShapeRenderer();
 
     }
 
@@ -36,8 +45,7 @@ public class BasicButton {
     }
 
     protected boolean checkCookingTimeHasPassed(){
-        long currentTime = TimeUtils.millis();
-        if((currentTime - initialClickTime)/1000 > cookingTime){
+        if( getTimePassedInSeconds() > cookingTime){
             game.getAudioHandler().plaHappySound();
             System.out.println("Production Finished - Time");
             return true;
@@ -48,5 +56,45 @@ public class BasicButton {
 
     public int getxPosition() {
         return xPosition;
+    }
+
+    protected void drawProgressBar(){
+        int barSize = 50;
+        int barHeight = 10;
+        int xTabSpace = 0;
+        int yTabSpace = 3;
+        drawProgressBar(barSize, barHeight, xTabSpace, yTabSpace);
+    }
+
+    protected void drawProgressBar(int barSize, int barHeight, int xTabSpace , int yTabSpace){
+
+        float barX = xPosition + (imageButton.getWidth()/2) - (barSize/2) + xTabSpace;
+        float barY = yPosition + imageButton.getHeight() + yTabSpace;
+
+
+        //cookingTime = 100;
+        //getTimePassedInSeconds() = progressionValue
+        long progressionValue = (barSize * getTimePassedInSeconds())/cookingTime;
+
+        shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        shapeRenderer.setColor(Color.WHITE);
+        shapeRenderer.rect(
+                barX,
+                barY,
+                barSize, barHeight);
+
+        shapeRenderer.setColor(Color.SALMON);
+        shapeRenderer.rect(
+                barX,
+                barY,
+                barSize - progressionValue, barHeight);
+        shapeRenderer.end();
+
+
+    }
+
+    private long getTimePassedInSeconds(){
+        long currentTime = TimeUtils.millis();
+        return (currentTime - initialClickTime)/1000;
     }
 }

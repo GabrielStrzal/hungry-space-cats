@@ -48,6 +48,8 @@ public class CookingFishPlaceButton extends BasicMakerButton {
                 gameController.addSmallBool();
                 imageButton.setTouchable(Touchable.enabled);
                 imageButton.setChecked(false);
+            } else {
+                drawProgressBar();
             }
         }
         // always set disabled if cannot click
