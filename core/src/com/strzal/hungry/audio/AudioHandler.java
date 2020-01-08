@@ -22,7 +22,7 @@ public class AudioHandler {
         assetManager = game.getAssetManager();
     }
 
-    public void plaHappySound(){
+    public void playHappySound(){
         Sound sound = assetManager.get(SoundPaths.CORRECT_AUDIO);
 //        if(game.getGameStatsHandler().isAudioOn())
         sound.play(volume);

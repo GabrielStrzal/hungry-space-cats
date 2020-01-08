@@ -46,7 +46,7 @@ public class BasicButton {
 
     protected boolean checkCookingTimeHasPassed(){
         if( getTimePassedInSeconds() > cookingTime){
-            game.getAudioHandler().plaHappySound();
+            game.getAudioHandler().playHappySound();
             System.out.println("Production Finished - Time");
             return true;
         }else{

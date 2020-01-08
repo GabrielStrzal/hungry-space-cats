@@ -32,7 +32,7 @@ public class ChipEntity extends FoodEntity {
 
     private void buttonClicked() {
         if (gameController.useChips()) {
-            game.getAudioHandler().plaHappySound();
+            game.getAudioHandler().playHappySound();
             gameController.getChipEntityList().remove(this);
             imageButton.remove();
         }

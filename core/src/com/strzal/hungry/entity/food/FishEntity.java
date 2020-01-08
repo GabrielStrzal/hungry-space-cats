@@ -32,7 +32,7 @@ public class FishEntity extends FoodEntity {
 
     private void buttonClicked() {
         if (gameController.useFish()) {
-            game.getAudioHandler().plaHappySound();
+            game.getAudioHandler().playHappySound();
             gameController.setCurrentFishEntity(null);
             imageButton.remove();
         }
